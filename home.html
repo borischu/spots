@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Spots: Find Your Perfect Study Experience</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+  <script type ="text/javascript" src="./search.js"></script>
+  <link rel="stylesheet" type="text/css" href="home.css">
+</head>
+<body>
+  
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
+  <a class="navbar-brand" href="home.html">
+    <img src="logo2.png" alt="Logo" style="width:40px;">
+    Spots
+  </a>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="home.html">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="about_us.html">About Us</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="contact.html">Contact Us</a>
+      </li>
+    </ul>
+  </div>
+
+  <form autocomplete="off" class="form-inline my-2 my-lg-0">
+      <div class="autocomplete">
+        <input id="searchSpots" class="form-control mr-sm-2" type="text" placeholder="Search">
+      </div>
+  </form>
+  <div class="dropdown">
+    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+        <img src="0.jpeg" alt="boris pic" style="width:35px">
+    </button>
+    <ul class="dropdown-menu dropdown-menu-right">
+      <li><a class="dropdown-item" href="blank.html">Profile</a></li>
+      <li><a class="dropdown-item" href="blank.html">Settings</a></li>
+      <li><a class="dropdown-item" href="blank.html">Logout</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container-fluid">
+  <div id="header" class="row">
+    <p class="col-sm-12"> Spots is a website that streamlines the process of finding an optimal study spot that best fits with your preferences. <br /> Check out some of your favorite spots down below! </p>
+  </div>
+
+  <div id="featured" class="row">
+    <div>
+      <h1> Featured </h1>
+    </div>
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="embed-responsive embed-responsive-16by9">
+          <iframe class="embed-responsive-item" src="featured.mp4" allowfullscreen></iframe>
+        </div>
+      </div>
+      <div id="description" class="col-sm-6">
+        <h2> GDC Lobby </h2>
+        <p>  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tincidunt hendrerit orci eget faucibus. Sed ultricies, urna eu bibendum mollis, dui metus rhoncus odio, id pharetra nulla velit tristique nulla. Morbi fermentum orci augue, vel pellentesque odio tempus non. Aenean est ipsum, fermentum vitae tortor sed, interdum suscipit nunc. <br /> Proin erat mi, consequat euismod metus non, viverra pulvinar nisi. Sed orci est, pellentesque venenatis sagittis id, dignissim cursus lorem. Suspendisse id metus massa. </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- popular -->
+  <div id="popular">
+    <div>
+      <h2> Popular </h2>
+    </div>
+    <div class="container mt-3">
+      <div id="popularCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
+
+        <ul class="carousel-indicators">
+          <li data-target="#popularCarousel" data-slide-to="0" class="active"></li>
+          <li data-target="#popularCarousel" data-slide-to="1"></li>
+          <li data-target="#popularCarousel" data-slide-to="2"></li>
+        </ul>
+
+        
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="row">
+              <div class="col-sm-3">
+                <a href="blank.html"><img src="union_underground.jpg" alt="Union Underground"></a>
+              </div>
+              <div class="col-sm-3">
+                <a href="blank.html"><img src="jester_central.jpg" alt="Jester Central"></a>
+              </div>
+              <div class="col-sm-3">
+                <a href="blank.html"><img src="j2.jpg" alt="Jester 2nd Floor"></a>
+              </div>
+              <div class="col-sm-3">
+                <a href="blank.html"><img src="jcl.jpg" alt="PCL Private Rooms"></a>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item ">
+            <div class="row">
+              <div class="col-sm-3">
+                <a href="blank.html"><img src="eerc.jpg" alt="EERC Ground Floor"></a>
+              </div>
+              <div class="col-sm-3">
+                <a href="blank.html"><img src="eerc_grad.jpg" alt="EERC Grad Lounge"></a>
+              </div>
+              <div class="col-sm-3">
+                <a href="blank.html"><img src="cain_abels.jpg" alt="Cain & Abels"></a>
+              </div>
+              <div class="col-sm-3">
+                <a href="blank.html"><img src="oxe.jpg" alt="OXE Lounge"></a>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item ">
+            <div class="row">
+              <div class="col-sm-3">
+                <a href="blank.html"><img src="oxe.jpg" alt="OXE Lounge"></a>
+              </div>
+              <div class="col-sm-3">
+                <a href="blank.html"><img src="billiards.jpg" alt="Gregory Gym Billiards"></a>
+              </div>
+              <div class="col-sm-3">
+                <a href="blank.html"><img src="welch.jpg" alt="Welch Ground Floor"></a>
+              </div>
+              <div class="col-sm-3">
+                <a href="blank.html"><img src="cpe_computer.jpg" alt="CPE Computer Labs"></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Left and right controls -->
+        <a class="carousel-control-prev" href="#popularCarousel" data-slide="prev">
+          <span class="carousel-control-prev-icon"></span>
+        </a>
+        <a class="carousel-control-next" href="#popularCarousel" data-slide="next">
+          <span class="carousel-control-next-icon"></span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- trending -->
+  <div id="trending">
+    <div>
+      <h2> Trending </h2>
+    </div>
+    <div class="container mt-3">
+      <div id="trendingCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
+
+        <ul class="carousel-indicators">
+          <li data-target="#trendingCarousel" data-slide-to="0" class="active"></li>
+          <li data-target="#trendingCarousel" data-slide-to="1"></li>
+          <li data-target="#trendingCarousel" data-slide-to="2"></li>
+        </ul>
+
+        <div class="carousel-inner">
+          <div class="carousel-item ">
+            <div class="row">
+              <div class="col-sm-3">
+                <a href="blank.html"><img src="union_underground.jpg" alt="Union Underground"></a>
+              </div>
+              <div class="col-sm-3">
+                <a href="blank.html"><img src="jester_central.jpg" alt="Jester Central"></a>
+              </div>
+              <div class="col-sm-3">
+                <a href="blank.html"><img src="j2.jpg" alt="Jester 2nd Floor"></a>
+              </div>
+              <div class="col-sm-3">
+                <a href="blank.html"><img src="jcl.jpg" alt="PCL Private Rooms"></a>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item active">
+            <div class="row">
+              <div class="col-sm-3">
+                <a href="blank.html"><img src="eerc.jpg" alt="EERC Ground Floor"></a>
+              </div>
+              <div class="col-sm-3">
+                <a href="blank.html"><img src="eerc_grad.jpg" alt="EERC Grad Lounge"></a>
+              </div>
+              <div class="col-sm-3">
+                <a href="blank.html"><img src="cain_abels.jpg" alt="Cain & Abels"></a>
+              </div>
+              <div class="col-sm-3">
+                <a href="blank.html"><img src="oxe.jpg" alt="OXE Lounge"></a>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item ">
+            <div class="row">
+              <div class="col-sm-3">
+                <a href="blank.html"><img src="oxe.jpg" alt="OXE Lounge"></a>
+              </div>
+              <div class="col-sm-3">
+                <a href="blank.html"><img src="billiards.jpg" alt="Gregory Gym Billiards"></a>
+              </div>
+              <div class="col-sm-3">
+                <a href="blank.html"><img src="welch.jpg" alt="Welch Ground Floor"></a>
+              </div>
+              <div class="col-sm-3">
+                <a href="blank.html"><img src="cpe_computer.jpg" alt="CPE Computer Labs"></a>
+              </div>
+            </div>
+          </div>
+        </div>
+                
+        
+        <!-- Left and right controls -->
+        <a class="carousel-control-prev" href="#trendingCarousel" data-slide="prev">
+          <span class="carousel-control-prev-icon"></span>
+        </a>
+        <a class="carousel-control-next" href="#trendingCarousel" data-slide="next">
+          <span class="carousel-control-next-icon"></span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- recently viewed-->
+  <div id="recent">
+    <div>
+      <h2> Recently Viewed </h2>
+    </div>
+    <div class="container mt-3">
+      <div id="recentCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
+
+        <ul class="carousel-indicators">
+          <li data-target="#recentCarousel" data-slide-to="0" class="active"></li>
+          <li data-target="#recentCarousel" data-slide-to="1"></li>
+          <li data-target="#recentCarousel" data-slide-to="2"></li>
+        </ul>
+
+        <div class="carousel-inner">
+          <div class="carousel-item ">
+            <div class="row">
+              <div class="col-sm-3">
+                <a href="blank.html"><img src="union_underground.jpg" alt="Union Underground"></a>
+              </div>
+              <div class="col-sm-3">
+                <a href="blank.html"><img src="jester_central.jpg" alt="Jester Central"></a>
+              </div>
+              <div class="col-sm-3">
+                <a href="blank.html"><img src="j2.jpg" alt="Jester 2nd Floor"></a>
+              </div>
+              <div class="col-sm-3">
+                <a href="blank.html"><img src="jcl.jpg" alt="PCL Private Rooms"></a>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item ">
+            <div class="row">
+              <div class="col-sm-3">
+                <a href="blank.html"><img src="eerc.jpg" alt="EERC Ground Floor"></a>
+              </div>
+              <div class="col-sm-3">
+                <a href="blank.html"><img src="eerc_grad.jpg" alt="EERC Grad Lounge"></a>
+              </div>
+              <div class="col-sm-3">
+                <a href="blank.html"><img src="cain_abels.jpg" alt="Cain & Abels"></a>
+              </div>
+              <div class="col-sm-3">
+                <a href="blank.html"><img src="oxe.jpg" alt="OXE Lounge"></a>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item active">
+            <div class="row">
+              <div class="col-sm-3">
+                <a href="blank.html"><img src="oxe.jpg" alt="OXE Lounge"></a>
+              </div>
+              <div class="col-sm-3">
+                <a href="blank.html"><img src="billiards.jpg" alt="Gregory Gym Billiards"></a>
+              </div>
+              <div class="col-sm-3">
+                <a href="blank.html"><img src="welch.jpg" alt="Welch Ground Floor"></a>
+              </div>
+              <div class="col-sm-3">
+                <a href="blank.html"><img src="cpe_computer.jpg" alt="CPE Computer Labs"></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Left and right controls -->
+          <a class="carousel-control-prev" href="#recentCarousel" data-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+          </a>
+          <a class="carousel-control-next" href="#recentCarousel" data-slide="next">
+            <span class="carousel-control-next-icon"></span>
+          </a>
+        </div>
+      </div>
+    </div>  
+  </div>
+  
+  <br />
+  <div id="footer">
+    <p> &copy; Daniel He, Atul Nayak, Boris Chu 2018 </p>
+  </div>
+
+</div>
+</body>
+<script>
+  var spots = ["Billards", "Cain and Abels", "CPE Computer Lab", "Engineering Education and Research Center", "EERC Grad", "J2 Dining Hall", "Jester City Limits", "Jester Central Hall", "OXE", "Union Underground", "Welch Hall"];
+  autocomplete(document.getElementById("searchSpots"), spots);
+</script>
+</html>
+
