@@ -22,12 +22,12 @@ h2 {
   margin-bottom: 0px;
 }
 
-#featured, #recent, #popular, #trending, #header, #about_us, #contact_us  {
+#featured, #recent, #popular, #trending, #header, #about_us, #contact_us, #regForm  {
   background-color: lightgray;
   padding: 20px;
 }
 
-#featured, #recent, #popular, #trending, #about_us, #contact_us {
+#featured, #recent, #popular, #trending, #about_us, #contact_us, #regForm {
   border: 2px solid black;
   border-radius: 10px;
   margin: 20px;
