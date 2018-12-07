@@ -49,7 +49,6 @@ h2 {
   color: black;
 }
 
-
 #footer {
   text-align: center;
 }
@@ -65,9 +64,9 @@ h2 {
   display: contents;
 }
 
-
-
-
+.carousel-inner img {
+  height: 150px;
+}
 
 .autocomplete {
   /*the container must be positioned relative:*/
