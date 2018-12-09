@@ -14,7 +14,7 @@
 <body>
   
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
-  <a class="navbar-brand" href="home.html">
+  <a class="navbar-brand" href="home.php">
     <img src="./img/logo2.png" alt="Logo" style="width:40px;">
     Spots
   </a>
@@ -26,13 +26,13 @@
   <div class="collapse navbar-collapse" id="collapsibleNavbar">
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link" href="home.html">Home</a>
+        <a class="nav-link" href="home.php">Home</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="about_us.html">About Us</a>
+        <a class="nav-link" href="about_us.php">About Us</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="contact.html">Contact Us</a>
+        <a class="nav-link" href="contact.php">Contact Us</a>
       </li>
     </ul>
   </div>
@@ -42,10 +42,29 @@
         <input id="searchSpots" class="form-control mr-sm-2" type="text" placeholder="Search">
       </div>
   </form>
-  <div class="btn-group">
-    <a role="button" class="btn btn-primary" href="./create_acct.html">Register</a>
-    <a role="button" class="btn btn-outline-primary" href="./login.html">Login</a>
-  </div>
+<?php
+  if(isset($_COOKIE["loggedIn"])) {
+    print <<<LOGGEDIN
+    <div class="dropdown">
+        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+            <img src="./img/0.jpeg" alt="boris pic" style="width:35px">
+        </button>
+        <ul class="dropdown-menu dropdown-menu-right">
+          <li><a class="dropdown-item" href="blank.html">Profile</a></li>
+          <li><a class="dropdown-item" href="blank.html">Settings</a></li>
+          <li><a class="dropdown-item" href="logOut.php">Logout</a></li>
+        </ul>
+    </div>
+LOGGEDIN;
+  } else {
+    print <<<LOGGEDOUT
+    <div class="btn-group">
+      <a role="button" class="btn btn-primary" href="./create_acct.php">Register</a>
+      <a role="button" class="btn btn-outline-primary" href="./login.php">Login</a>
+    </div>
+LOGGEDOUT;
+  }
+?>
 </nav>
 
 <div class="container-fluid">
