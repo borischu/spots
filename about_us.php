@@ -26,13 +26,13 @@
   <div class="collapse navbar-collapse" id="collapsibleNavbar">
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link" href="home.php">Home</a>
-      </li>
-      <li class="nav-item">
         <a class="nav-link" href="about_us.php">About Us</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="contact.php">Contact Us</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="addSpot.php">Add a Spot!</a>
       </li>
     </ul>
   </div>
@@ -47,7 +47,7 @@
     print <<<LOGGEDIN
     <div class="dropdown">
         <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-            <img src="./img/0.jpeg" alt="boris pic" style="width:35px">
+            <img src="./img/0.jpg" alt="boris pic" style="width:35px">
         </button>
         <ul class="dropdown-menu dropdown-menu-right">
           <li><a class="dropdown-item" href="blank.html">Profile</a></li>

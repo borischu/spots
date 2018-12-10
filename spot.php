@@ -1,3 +1,6 @@
+<?php
+  session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,6 +12,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
   <script type ="text/javascript" src="./js/search.js"></script>
+  <script type ="text/javascript" src="./js/acct_validate.js"></script>
   <link rel="stylesheet" type="text/css" href="./css/home.css">
 </head>
 <body>
@@ -69,46 +73,50 @@ LOGGEDOUT;
 
 <div class="container-fluid">
 
-  <div id="contact_us" class="row">
-    <div>
-      <h1>Contact Us</h1>
-    </div>
-    <br /><br />
-    
-    <!--
-    <div id="contact_info" class="row">
-      <div class="col-sm-12"> <b>Daniel He:</b><br>
-      3111 Tom Green St <br>
-      Phone: 281-617-6396<br>
-      Email: danielhe@utexas.edu
+<?php
+  $_SESSION["spot"] = $_GET["spot"];
+  if (isset($_SESSION["username"]) && isset($_SESSION["spot"])) {
+
+    $host = "fall-2018.cs.utexas.edu";
+    $user = "cs329e_mitra_borischu";
+    $pwd = "Part&Snake=freer";
+    $dbs = "cs329e_mitra_borischu";
+    $port = "3306";
+
+    $connect = mysqli_connect($host, $user, $pwd, $dbs, $port);
+
+    if (empty($connect)) {
+      die("mysqli_connect failed: " . mysqli_connect_error());
+    }
+
+    $spot = str_replace('$20', ' ', $_SESSION["spot"]);
+    // add data to a table
+    $table = "spots";
+    $qry = "SELECT * FROM $table WHERE spot = '$spot'";
+    $result = mysqli_query($connect, $qry);
+    while ($row = $result->fetch_row()) {
+      $spotBlock = $spotBlock."<div id=\"viewSpot\" class=\"row\">
+      <div>
+        <h1>".$row['1']."</h1>
       </div>
-    </div>
+      <div class=\"row\">
+        <div class=\"col-sm-6\">
+          <div class=\"embed-responsive embed-responsive-16by9\">
+              <img src=".$row['3']." type=\"image\">
+            </video>
+          </div>
+        </div>
+        <div id=\"description\" class=\"col-sm-6\">
+          <p>".$row[5]."</p>
+        </div>
+        </div>
+      </div>"; 
+    } 
 
-    <br />-->
-    <div id="contact_info" class="row">
-      <div class="col-sm-12"> <b>Atul Nayak:</b><br>
-      2300 Nueces Street <br>
-      Phone: 281-394-2758<br>
-      Email: a.nayak511@utexas.edu
-      </div>
-    </div>
-
-    <br />
-    <div id="contact_info" class="row">
-      <div class="col-sm-12"> <br><b>Boris Chu:</b><br>
-      2822 Rio Grande St. <br>
-      Phone: 832-605-4350<br>
-      Email: boriskchu@utexas.edu
-      </div>
-    </div>
-
-    <br>
-  </div>
-
-  <br>
-  <div id="footer">
-    <p> &copy; Atul Nayak, Boris Chu 2018 </p>
-  </div>
+    print($spotBlock);
+    mysqli_close($connect);
+  }
+?>
 </div>
 </body>
 <script>

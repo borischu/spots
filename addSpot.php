@@ -1,3 +1,6 @@
+<?php
+  session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,6 +12,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
   <script type ="text/javascript" src="./js/search.js"></script>
+  <script type ="text/javascript" src="./js/acct_validate.js"></script>
   <link rel="stylesheet" type="text/css" href="./css/home.css">
 </head>
 <body>
@@ -69,46 +73,89 @@ LOGGEDOUT;
 
 <div class="container-fluid">
 
-  <div id="contact_us" class="row">
-    <div>
-      <h1>Contact Us</h1>
-    </div>
-    <br /><br />
-    
-    <!--
-    <div id="contact_info" class="row">
-      <div class="col-sm-12"> <b>Daniel He:</b><br>
-      3111 Tom Green St <br>
-      Phone: 281-617-6396<br>
-      Email: danielhe@utexas.edu
-      </div>
-    </div>
+<?php
+  if (isset($_SESSION["username"])) {
+    $script = $_SERVER['PHP_SELF'];
+    print <<<SPOTSFORM
+    <form id = "regForm" method = "post" action = "$script">
+      <h2>Add a study spot!</h2>
+      <br>
+      <table border = "0">
+        <tr>
+          <td> Study Spot </td>
+          <td> <input type = "text" name = "spot" id="spot"/></td>
+        </tr>
+        <tr>
+          <td> Location </td>
+          <td> <input type = "text" name = "location" id="location"/></td>
+        </tr>
+        <tr>
+          <td> Link to Image </td>
+          <td> <input type = "link" name = "image" id="image"/></td>
+        </tr>
+        <tr>
+          <td> Quietness Rating </td>
+          <td> <input type = "number" name = "rating" id="rating"/></td>
+        </tr>
+        <tr>
+          <td> Review </td>
+          <td> <input type = "text" name = "review" id="review"/></td>
+        </tr>
+        <tr>
+          <td><br><input type="submit" value="Submit" name="submit"></td>
+          <td><br><input type = "reset" value = "Clear" /></td>
+        </tr>
 
-    <br />-->
-    <div id="contact_info" class="row">
-      <div class="col-sm-12"> <b>Atul Nayak:</b><br>
-      2300 Nueces Street <br>
-      Phone: 281-394-2758<br>
-      Email: a.nayak511@utexas.edu
-      </div>
-    </div>
+      </table>
+    </form>
+SPOTSFORM;
 
-    <br />
-    <div id="contact_info" class="row">
-      <div class="col-sm-12"> <br><b>Boris Chu:</b><br>
-      2822 Rio Grande St. <br>
-      Phone: 832-605-4350<br>
-      Email: boriskchu@utexas.edu
-      </div>
-    </div>
+    if(isset($_POST["submit"])) {
+      // Connect to the MySQL database
+      $host = "fall-2018.cs.utexas.edu";
+      $user = "cs329e_mitra_borischu";
+      $pwd = "Part&Snake=freer";
+      $dbs = "cs329e_mitra_borischu";
+      $port = "3306";
 
-    <br>
-  </div>
+      $connect = mysqli_connect ($host, $user, $pwd, $dbs, $port);
 
-  <br>
-  <div id="footer">
-    <p> &copy; Atul Nayak, Boris Chu 2018 </p>
-  </div>
+      if (empty($connect)) {
+        die("mysqli_connect failed: " . mysqli_connect_error());
+      }
+
+      extract($_POST);
+      $table = "spots";
+      $username = $_SESSION["username"];
+      $spot = $_POST["spot"];
+      $location = $_POST["location"];
+      $image = $_POST["image"];
+      $rating = $_POST["rating"];
+      $review = $_POST["review"];
+      $time = time(); // time post request was made 
+
+      $stmt = mysqli_prepare ($connect, "INSERT INTO $table VALUES (?, ?, ?, ?, ?, ?, ?)");
+      mysqli_stmt_bind_param ($stmt, 'ssssisi', $username, $spot, $location, $image, $rating, $review, $time);
+      mysqli_stmt_execute($stmt);
+      if(mysqli_affected_rows($connect) == 0 || mysqli_affected_rows($connect) == -1) {
+      print "One of the inputs was not the correct data type. ID must be an 4 number integer and GPA must be a 2 decimal float. LAST, FIRST, and MAJOR must all be strings.";
+      }
+      else {
+        print "The insertion was successful!<br/><br />\n";
+      }
+      mysqli_stmt_close($stmt);
+      // Close connection to the database
+      mysqli_close($connect);
+    }
+  } else {
+    print <<<NOTLOGGEDIN
+      <p>Log into add a spot for other people to see!</p>
+NOTLOGGEDIN;
+  }
+
+?>
+
+
 </div>
 </body>
 <script>

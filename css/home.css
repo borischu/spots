@@ -22,12 +22,12 @@ h2 {
   margin-bottom: 0px;
 }
 
-#featured, #recent, #popular, #trending, #header, #about_us, #contact_us, #regForm  {
+#featured, #recent, #popular, #trending, #header, #about_us, #contact_us, #regForm, #viewSpot  {
   background-color: lightgray;
   padding: 20px;
 }
 
-#featured, #recent, #popular, #trending, #about_us, #contact_us, #regForm {
+#featured, #recent, #popular, #trending, #about_us, #contact_us, #regForm, #viewSpot {
   border: 2px solid black;
   border-radius: 10px;
   margin: 20px;
@@ -80,6 +80,14 @@ input {
   font-size: 16px;
 }
 input[type=text] {
+  background-color: #f1f1f1;
+  width: 100%;
+}
+input[type=username] {
+  background-color: #f1f1f1;
+  width: 100%;
+}
+input[type=password] {
   background-color: #f1f1f1;
   width: 100%;
 }

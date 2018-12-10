@@ -1,5 +1,5 @@
 <?php
-	
+	session_start();
 	extract($_POST);
 	$username = $_POST["username"];
 	$password = $_POST["password"];
@@ -22,6 +22,7 @@
 
 	if ($correctlogin) {
 		setcookie("loggedIn", "true");
+		$_SESSION["username"] = $username;
 		header("Location: home.php");
 	} else {
 		header("Location: login.php");
