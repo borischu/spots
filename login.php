@@ -100,6 +100,10 @@ LOGGEDOUT;
 </div>
 
 </body>
+<br><br><br>
+<div id="footer">
+    <p> &copy; Atul Nayak, Boris Chu 2018 </p>
+</div>
 <script>
   var spots = ["Billards", "Cain and Abels", "CPE Computer Lab", "Engineering Education and Research Center", "EERC Grad", "J2 Dining Hall", "Jester City Limits", "Jester Central Hall", "OXE", "Union Underground", "Welch Hall"];
   autocomplete(document.getElementById("searchSpots"), spots);

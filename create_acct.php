@@ -100,11 +100,11 @@ LOGGEDOUT;
       <tr>
         <td colspan="2" class="registerForm">
           <ul>
-            <li>The user name must be between 6 and 10 characters long.</li>
+            <li>The user name must be between 8 and 50 characters long.</li>
             <li>The user name must contain only letters and digits.</li>
             <li>The user name cannot begin with a digit.</li>
             <li>The password and the repeat password must match.</li>
-            <li>The password must be between 6 and 10 characters.</li>
+            <li>The password must be between 8 and 32 characters.</li>
             <li>The password must contain only letters and digits.</li>
             <li>The password must have at least one lower case letter, at least one upper case letter, and at least one digit. </li>
           </ul>
@@ -121,6 +121,10 @@ LOGGEDOUT;
 
 </div>
 </body>
+<br><br><br>
+<div id="footer">
+    <p> &copy; Atul Nayak, Boris Chu 2018 </p>
+</div>
 <script>
   var spots = ["Billards", "Cain and Abels", "CPE Computer Lab", "Engineering Education and Research Center", "EERC Grad", "J2 Dining Hall", "Jester City Limits", "Jester Central Hall", "OXE", "Union Underground", "Welch Hall"];
   autocomplete(document.getElementById("searchSpots"), spots);

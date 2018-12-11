@@ -98,15 +98,15 @@ LOGGEDOUT;
         </div>
       </div>
       <div id="description" class="col-sm-6">
-        <h2><a href="spot.php?spot=GDC Lobby">GDC Lobby</a></h2>
+        <h2><a href="spot.php?spot=GDC Atrium">GDC Atrium</a></h2>
         <p>The Gates Dell Complex is one of the newest buildings on campus. It is the home of the university's computer science department. Be one of the first people to rate this study spot on campus! </p>
       </div>
     </div>
   </div>
 
 <?php
-    $host = "fall-2018.cs.utexas.edu";
-    // $host = "localhost";
+    // $host = "fall-2018.cs.utexas.edu";
+    $host = "localhost";
     $user = "cs329e_mitra_borischu";
     $pwd = "Part&Snake=freer";
     $dbs = "cs329e_mitra_borischu";
@@ -246,7 +246,7 @@ BOTTOM;
       <!-- recent -->
       <div id="recent">
         <div>
-          <h2> Recently Added </h2>
+          <h2> Recently Reviewed </h2>
         </div>
         <div class="container mt-3">
         <div id="recentCarousel" class="carousel slide" data-ride="carousel" data-interval="false">

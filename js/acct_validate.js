@@ -3,8 +3,8 @@ function validForm () {
       var username = document.getElementById("username");
       var password = document.getElementById("password");
       var password2 = document.getElementById("password2");
-      var user = /^([a-z]|[A-Z])([a-z]|[A-Z]|[0-9]){5,9}$/;
-      var pass = /^([a-z]|[A-Z]|[0-9]){6,10}$/;
+      var user = /^([a-z]|[A-Z])([a-z]|[A-Z]|[0-9]){7,49}$/;
+      var pass = /^([a-z]|[A-Z]|[0-9]){7,31}$/;
       var passnum = /(.*[0-9].*)/;
       var passlow = /(.*[a-z].*)/;
       var passupper = /(.*[A-Z].*)/;

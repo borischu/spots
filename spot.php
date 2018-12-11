@@ -84,59 +84,60 @@ LOGGEDOUT;
 
 <?php
   $_SESSION["spot"] = $_GET["spot"];
-  if (isset($_SESSION["username"]) && isset($_SESSION["spot"])) {
+  // $host = "fall-2018.cs.utexas.edu";
+  $host = "localhost";
+  $user = "cs329e_mitra_borischu";
+  $pwd = "Part&Snake=freer";
+  $dbs = "cs329e_mitra_borischu";
+  $port = "3306";
 
-    $host = "fall-2018.cs.utexas.edu";
-    // $host = "localhost";
-    $user = "cs329e_mitra_borischu";
-    $pwd = "Part&Snake=freer";
-    $dbs = "cs329e_mitra_borischu";
-    $port = "3306";
+  $connect = mysqli_connect($host, $user, $pwd, $dbs, $port);
 
-    $connect = mysqli_connect($host, $user, $pwd, $dbs, $port);
+  if (empty($connect)) {
+    die("mysqli_connect failed: " . mysqli_connect_error());
+  }
 
-    if (empty($connect)) {
-      die("mysqli_connect failed: " . mysqli_connect_error());
-    }
-
-    $spot = str_replace('$20', ' ', $_SESSION["spot"]);
-    $table = "spots";
-    $qry = "SELECT * FROM $table WHERE spot = '$spot'";
-    $result = mysqli_query($connect, $qry);
-    while ($row = $result->fetch_row()) {
-      $spotBlock = $spotBlock.
-      "<div id=\"spotsReview\" class=\"spotImage\">
-        <div class=\"row\">
-          <div class=\"col-sm-12\">
-            <h2>Review by <b>".$row[0]."</b></h2>
-          </div>
-          <div class=\"embed-responsive\">
-            <img src=".$row[3]." type=\"image\">
-          </div>
-          <div id=\"location\" class=\"col-sm-12\">
-            <a target=\"blank\" href=".$row[2].">Location</a>
-          </div>
-          <div id=\"rating\" class=\"col-sm-12\">
-            <p>Rating: ".$row[4]."</p>
-          </div>
-          <br>
-          <div id=\"description\" class=\"col-sm-12\">
-            <p>".$row[5]."</p>
-          </div>
+  $spot = str_replace('$20', ' ', $_SESSION["spot"]);
+  $table = "spots";
+  $qry = "SELECT * FROM $table WHERE spot = '$spot' ORDER BY time";
+  $result = mysqli_query($connect, $qry);
+  while ($row = $result->fetch_row()) {
+    $spotBlock = $spotBlock.
+    "<div id=\"spotsReview\" class=\"spotImage\">
+      <div class=\"row\">
+        <div class=\"col-sm-12\">
+          <h2>Review by <b>".$row[0]."</b></h2>
         </div>
-      </div>"; 
-    } 
-    print <<<TOP
-      <div id="viewSpot" class="row">
-        <div class="col-sm-12">
-          <h1 class="spotTitle">$spot</h1>
+        <div class=\"embed-responsive\">
+          <img src=".$row[3]." type=\"image\">
+        </div>
+        <div id=\"location\" class=\"col-sm-12\">
+          <a target=\"blank\" href=".$row[2].">Location</a>
+        </div>
+        <div id=\"rating\" class=\"col-sm-12\">
+          <p>Rating: ".$row[4]."</p>
+        </div>
+        <br>
+        <div id=\"description\" class=\"col-sm-12\">
+          <p>".$row[5]."</p>
         </div>
       </div>
+    </div>"; 
+  } 
+  print <<<TOP
+    <div id="viewSpot" class="row">
+      <div class="col-sm-12">
+        <h1 class="spotTitle">$spot</h1>
+      </div>
+    </div>
 TOP;
-    print($spotBlock);
-    mysqli_close($connect);
-  }
+  print($spotBlock);
+  mysqli_close($connect);
 ?>
+</div>
+<br>
+<div id="footer">
+    <p> &copy; Atul Nayak, Boris Chu 2018 </p>
 </div>
 </body>
 <script>

@@ -83,63 +83,51 @@ LOGGEDOUT;
 <div class="container-fluid">
 
 <?php
-  if (isset($_SESSION["username"])) {
+  // $host = "fall-2018.cs.utexas.edu";
+  $host = "localhost";
+  $user = "cs329e_mitra_borischu";
+  $pwd = "Part&Snake=freer";
+  $dbs = "cs329e_mitra_borischu";
+  $port = "3306";
 
-    $host = "fall-2018.cs.utexas.edu";
-    // $host = "localhost";
-    $user = "cs329e_mitra_borischu";
-    $pwd = "Part&Snake=freer";
-    $dbs = "cs329e_mitra_borischu";
-    $port = "3306";
+  $connect = mysqli_connect($host, $user, $pwd, $dbs, $port);
 
-    $connect = mysqli_connect($host, $user, $pwd, $dbs, $port);
-
-    if (empty($connect)) {
-      die("mysqli_connect failed: " . mysqli_connect_error());
-    }
-
-    $table = "spots";
-    $qry = "SELECT spot, count(username), avg(rating) FROM $table GROUP BY spot";
-    $result = mysqli_query($connect, $qry);
-    $str = '<table id="reviewTable" class="table table-hover text-centered"><tr><th>Spot</th><th>Total Reviewers</th><th>Average Ratings</th></tr>';
-    while ($row = $result->fetch_row()) {
-      $str = $str."<tr><td><a href=\"./spot.php?spot=".$row[0]."\">".$row[0]."</a></td><td>".$row[1]."</td><td>".$row[2]."</td></tr>"; 
-    } 
-    print <<<TOP
-      <div id="viewSpot" class="row">
-        <div class="col-sm-12">
-          <h1 class="spotTitle">List of Spots</h1>
-        </div>
-      </div>
-      <div id="spotsReview">
-TOP;
-    print($str);
-    print <<<BOTTOM
-      </div>
-BOTTOM;
-    mysqli_close($connect);
+  if (empty($connect)) {
+    die("mysqli_connect failed: " . mysqli_connect_error());
   }
-  else{
-    print <<<NOTLOGGEDIN
-    <div class="container-fluid">
-      <div id="contact_us">
-        <div class="row">
-          <div class="col-sm-12 align-self-center">
-            <div class="spotTitle">
-              Log in to see your list of Spots!
-            </div>
-          </div>
-        </div>
+
+  $table = "spots";
+  $qry = "SELECT spot, count(username), avg(rating) FROM $table GROUP BY spot";
+  $result = mysqli_query($connect, $qry);
+  $str = '<table id="reviewTable" class="table table-hover text-centered"><tr><th>Spot</th><th>Total Reviewers</th><th>Average Ratings</th></tr>';
+  while ($row = $result->fetch_row()) {
+    $str = $str."<tr><td><a href=\"./spot.php?spot=".$row[0]."\">".$row[0]."</a></td><td>".$row[1]."</td><td>".$row[2]."</td></tr>"; 
+  } 
+  print <<<TOP
+    <div id="viewSpot" class="row">
+      <div class="col-sm-12">
+        <h1 class="spotTitle">List of Spots</h1>
       </div>
     </div>
-NOTLOGGEDIN;
-  }
+    <div id="spotsReview">
+TOP;
+  print($str);
+  print <<<BOTTOM
+    </table>
+    </div>
+BOTTOM;
+  mysqli_close($connect);
 ?>
+</div>
+<br>
+<div id="footer">
+    <p> &copy; Atul Nayak, Boris Chu 2018 </p>
 </div>
 </body>
 <script>
   var spots = ["Billards", "Cain and Abels", "CPE Computer Lab", "Engineering Education and Research Center", "EERC Grad", "J2 Dining Hall", "Jester City Limits", "Jester Central Hall", "OXE", "Union Underground", "Welch Hall"];
   autocomplete(document.getElementById("searchSpots"), spots);
 </script>
+<br>
 </html>
 

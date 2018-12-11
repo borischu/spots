@@ -106,8 +106,8 @@ LOGGEDOUT;
         <input type="number" class="form-control" id="rating" name="rating">
       </div>
       <div class="form-group">
-        <label for="comment">Comments:</label>
-        <textarea class="form-control" rows="5" id="comment"></textarea>
+        <label for="review">Comments:</label>
+        <textarea class="form-control" rows="5" id="review"></textarea>
       </div>
       <div class="form-group">
         <input type="submit" value="Submit" name="submit">
@@ -118,8 +118,8 @@ SPOTSFORM;
 
     if(isset($_POST["submit"])) {
       
-      $host = "fall-2018.cs.utexas.edu";
-      // $host = "localhost";
+      // $host = "fall-2018.cs.utexas.edu";
+      $host = "localhost";
       $user = "cs329e_mitra_borischu";
       $pwd = "Part&Snake=freer";
       $dbs = "cs329e_mitra_borischu";
