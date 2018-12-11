@@ -114,7 +114,7 @@ LOGGEDOUT;
             <img src=".$row[3]." type=\"image\">
           </div>
           <div id=\"location\" class=\"col-sm-12\">
-            <a target=\"blank\" href=".$row[2].">Location</a>
+            <a target=\"blank\" href=".$row[2]."> Link to Location</a>
           </div>
           <div id=\"rating\" class=\"col-sm-12\">
             <p>Rating: ".$row[4]."</p>
