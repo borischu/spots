@@ -36,10 +36,10 @@
         <a class="nav-link" href="contact.php">Contact Us</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="addSpot.php">Add a Spot!</a>
+        <a class="nav-link" href="listSpots.php">List of Spots</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="listSpots.php">List of Spots</a>
+        <a class="nav-link" href="addSpot.php">Review a Spot!</a>
       </li>
     </ul>
   </div>
@@ -161,7 +161,7 @@ SPOTSFORM;
         <div class="row">
           <div class="col-sm-12 align-self-center">
             <div class="spotTitle">
-              Log in to add a Spot for other people to see!
+              Log in to review a Spot for other people to see!
             </div>
           </div>
         </div>

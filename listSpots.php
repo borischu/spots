@@ -36,10 +36,10 @@
         <a class="nav-link" href="contact.php">Contact Us</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="addSpot.php">Add a Spot!</a>
+        <a class="nav-link" href="listSpots.php">List of Spots</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="listSpots.php">List of Spots</a>
+        <a class="nav-link" href="addSpot.php">Review a Spot!</a>
       </li>
     </ul>
   </div>
@@ -83,8 +83,6 @@ LOGGEDOUT;
 <div class="container-fluid">
 
 <?php
-  if (isset($_SESSION["username"])) {
-
     $host = "fall-2018.cs.utexas.edu";
     // $host = "localhost";
     $user = "cs329e_mitra_borischu";
@@ -118,7 +116,7 @@ TOP;
       </div>
 BOTTOM;
     mysqli_close($connect);
-  }
+  /*
   else{
     print <<<NOTLOGGEDIN
     <div class="container-fluid">
@@ -133,7 +131,7 @@ BOTTOM;
       </div>
     </div>
 NOTLOGGEDIN;
-  }
+  }*/
 ?>
 </div>
 </body>
