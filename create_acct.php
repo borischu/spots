@@ -87,7 +87,7 @@ LOGGEDOUT;
     <table border = "0">
      <tr>
         <td class="loginForm"><label for="username">Username: </label></td>
-        <td class="loginForm"><input type="text" id="username" name="username" required></td>
+        <td class="loginForm"><input type="text" id="username" name="username" required onchange="callServer();"></td>
       </tr>
       <tr>
         <td class="loginForm"><label for="password">Password: </label></td>

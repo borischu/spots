@@ -31,3 +31,48 @@ function validForm () {
 
       return true;
     }
+
+var xhr; 
+if (window.ActiveXObject) { 
+  xhr = new ActiveXObject ("Microsoft.XMLHTTP"); 
+} 
+else if (window.XMLHttpRequest) { 
+  xhr = new XMLHttpRequest (); 
+} 
+
+function callServer() { 
+  // Get username from web form 
+  var username = document.getElementById("username").value; 
+
+  // Only make the server call if there is data 
+  if (username == null || username == "") {return;}
+
+  // Build the URL to connect to 
+  var url = "./checkUser.php"; 
+
+  // Create the name-value pairs that will be sent as data 
+  var params = "username="+username;
+
+  // Open a connection to the server 
+  xhr.open ("POST", url, true); 
+
+  // Create the proper headers to send with the request
+  xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+  // Setup a function for the server to run when it is done 
+  xhr.onreadystatechange = updatePage; 
+
+  // Send the request 
+  xhr.send(params); 
+} 
+
+function updatePage() { 
+    if (xhr.readyState == 4) { 
+        if (xhr.status == 200) { 
+            var response = xhr.responseText;
+            if(response.trim() == "userTaken") {
+              window.alert("This username has already been taken.");
+            }
+        }
+    }
+} 
