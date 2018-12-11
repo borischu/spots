@@ -89,34 +89,30 @@ LOGGEDOUT;
     <form id = "regForm" method = "post" action = "$script">
       <h2>Add a Study Spot!</h2>
       <br>
-      <table border = "0">
-        <tr>
-          <td class="addSpotForm"> <label for="spot">Study Spot: </label></td>
-          <td class="loginForm"> <input type="text" name="spot" id="spot"/></td>
-        </tr>
-        <tr>
-          <td class="addSpotForm"> <label for="location">Location: </label></td>
-          <td class="loginForm"> <input type ="text" name ="location" id="location"/></td>
-        </tr>
-        <tr>
-          <td class="addSpotForm"> <label for="image">Link to Image: </label></td>
-          <td class="loginForm"> <input type="link" name="image" id="image"/></td>
-        </tr>
-        <tr>
-          <td class="addSpotForm"> <label for="rating">Quietness Rating: </label></td>
-          <td class="loginForm"> <input type="number" name="rating" id="rating"/></td>
-        </tr>
-        <tr>
-          <td class="addSpotForm"> <label for="review">Review: </label></td>
-          <td class="loginForm"> <input type="text" name="review" id="review"/></td>
-        </tr>
-        <tr>
-          <td class="loginForm" colspan="2">
-            <input type="submit" value="Submit" name="submit">
-            <input type = "reset" value = "Clear" />
-          </td>
-        </tr>
-      </table>
+      <div class="form-group">
+        <label for="spot">Study Spot:</label>
+        <input type="text" class="form-control" id="spot" name="spot">
+      </div>
+      <div class="form-group">
+        <label for="location">Location:</label>
+        <input type="text" class="form-control" id="location" name="location">
+      </div>
+      <div class="form-group">
+        <label for="image">Link to Image:</label>
+        <input type="link" class="form-control" id="image" name="image">
+      </div>
+      <div class="form-group">
+        <label for="rating">Location:</label>
+        <input type="number" class="form-control" id="rating" name="rating">
+      </div>
+      <div class="form-group">
+        <label for="comment">Comment:</label>
+        <textarea class="form-control" rows="5" id="comment"></textarea>
+      </div>
+      <div class="form-group">
+        <input type="submit" value="Submit" name="submit">
+        <input type = "reset" value = "Clear" />
+      </div>
     </form>
 SPOTSFORM;
 
