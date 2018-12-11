@@ -108,17 +108,20 @@ LOGGEDOUT;
       "<div id=\"spotsReview\" class=\"spotImage\">
         <div class=\"row\">
           <div class=\"col-sm-12\">
-            <h2>Review by <b>".$row['0']."</b></h2>
+            <h2>Review by <b>".$row[0]."</b></h2>
           </div>
           <div class=\"embed-responsive\">
-            <img src=".$row['3']." type=\"image\">
+            <img src=".$row[3]." type=\"image\">
+          </div>
+          <div id=\"location\" class=\"col-sm-12\">
+            <a target=\"blank\" href=".$row[2].">Location</a>
           </div>
           <div id=\"rating\" class=\"col-sm-12\">
-            <p>Rating: ".$row['4']."</p>
+            <p>Rating: ".$row[4]."</p>
           </div>
           <br>
           <div id=\"description\" class=\"col-sm-12\">
-            <p>".$row['5']."</p>
+            <p>".$row[5]."</p>
           </div>
         </div>
       </div>"; 
