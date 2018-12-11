@@ -66,9 +66,15 @@ LOGGEDIN;
   } else {
     print <<<LOGGEDOUT
     <div class="btn-group">
-      <a role="button" class="btn btn-primary" href="./create_acct.php">Register</a>
-      <a role="button" class="btn btn-outline-primary" href="./login.php">Login</a>
-    </div>
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="./create_acct.php">Register</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./login.php">Login</a>
+          </li>
+        </ul>
+      </div>
 LOGGEDOUT;
   }
 ?>
@@ -153,7 +159,17 @@ SPOTSFORM;
     }
   } else {
     print <<<NOTLOGGEDIN
-      <p>Log into add a spot for other people to see!</p>
+    <div class="container-fluid">
+      <div id="contact_us">
+        <div class="row">
+          <div class="col-sm-12 align-self-center">
+            <div class="spotTitle">
+              Log in to add a Spot for other people to see!
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 NOTLOGGEDIN;
   }
 

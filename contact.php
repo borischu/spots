@@ -62,9 +62,15 @@ LOGGEDIN;
   } else {
     print <<<LOGGEDOUT
     <div class="btn-group">
-      <a role="button" class="btn btn-primary" href="./create_acct.php">Register</a>
-      <a role="button" class="btn btn-outline-primary" href="./login.php">Login</a>
-    </div>
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="./create_acct.php">Register</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./login.php">Login</a>
+          </li>
+        </ul>
+      </div>
 LOGGEDOUT;
   }
 ?>

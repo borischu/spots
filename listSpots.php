@@ -66,9 +66,15 @@ LOGGEDIN;
   } else {
     print <<<LOGGEDOUT
     <div class="btn-group">
-      <a role="button" class="btn btn-primary" href="./create_acct.php">Register</a>
-      <a role="button" class="btn btn-outline-primary" href="./login.php">Login</a>
-    </div>
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="./create_acct.php">Register</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./login.php">Login</a>
+          </li>
+        </ul>
+      </div>
 LOGGEDOUT;
   }
 ?>
@@ -112,6 +118,21 @@ TOP;
       </div>
 BOTTOM;
     mysqli_close($connect);
+  }
+  else{
+    print <<<NOTLOGGEDIN
+    <div class="container-fluid">
+      <div id="contact_us">
+        <div class="row">
+          <div class="col-sm-12 align-self-center">
+            <div class="spotTitle">
+              Log in to see your list of Spots!
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+NOTLOGGEDIN;
   }
 ?>
 </div>

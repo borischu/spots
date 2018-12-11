@@ -63,8 +63,14 @@ LOGGEDIN;
   } else {
       print <<<LOGGEDOUT
       <div class="btn-group">
-        <a role="button" class="btn btn-primary" href="./create_acct.php">Register</a>
-        <a role="button" class="btn btn-outline-primary" href="./login.php">Login</a>
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="./create_acct.php">Register</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./login.php">Login</a>
+          </li>
+        </ul>
       </div>
 LOGGEDOUT;
   }
@@ -78,8 +84,10 @@ LOGGEDOUT;
   </div>
 
   <div id="featured" class="row">
-    <div>
-      <h1> Featured </h1>
+    <div class="row">
+      <div class="col-sm-12">
+        <h1> Featured </h1>
+      </div>
     </div>
     <div class="row">
       <div class="col-sm-6">
@@ -103,11 +111,6 @@ LOGGEDOUT;
     </div>
     <div class="container mt-3">
       <div id="popularCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
-        <ul class="carousel-indicators">
-          <li data-target="#popularCarousel" data-slide-to="0" class="active"></li>
-          <li data-target="#popularCarousel" data-slide-to="1"></li>
-          <li data-target="#popularCarousel" data-slide-to="2"></li>
-        </ul>
         <div class="carousel-inner">
           <div class="carousel-item active">
             <div class="row">
@@ -177,13 +180,6 @@ LOGGEDOUT;
     </div>
     <div class="container mt-3">
       <div id="trendingCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
-
-        <ul class="carousel-indicators">
-          <li data-target="#trendingCarousel" data-slide-to="0" class="active"></li>
-          <li data-target="#trendingCarousel" data-slide-to="1"></li>
-          <li data-target="#trendingCarousel" data-slide-to="2"></li>
-        </ul>
-
         <div class="carousel-inner">
           <div class="carousel-item ">
             <div class="row">
@@ -254,13 +250,6 @@ LOGGEDOUT;
     </div>
     <div class="container mt-3">
       <div id="recentCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
-
-        <ul class="carousel-indicators">
-          <li data-target="#recentCarousel" data-slide-to="0" class="active"></li>
-          <li data-target="#recentCarousel" data-slide-to="1"></li>
-          <li data-target="#recentCarousel" data-slide-to="2"></li>
-        </ul>
-
         <div class="carousel-inner">
           <div class="carousel-item ">
             <div class="row">
