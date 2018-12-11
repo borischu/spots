@@ -180,3 +180,16 @@ input[type=submit]:hover {
   padding-bottom: 5px;
   padding-right: .75em;
 }
+
+#trendingCarousel, #recentCarousel, #popularCarousel {
+  margin-left: 2em;
+  margin-right: 2em;
+}
+
+.carousel-control-prev {
+  margin-left: -3em;
+}
+
+.carousel-control-next {
+  margin-right: -3em;
+}
