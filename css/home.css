@@ -2,6 +2,23 @@ h2 {
   font-size: 16pt;
 }
 
+.spotTitle {
+  font-size: 24pt;
+  text-align: center;
+}
+
+.spotImage, .spotReview {
+  text-align: center;
+}
+
+#spotsReview img {
+  max-width:500px;
+  max-height:200px;
+  width: auto;
+  height: auto;
+  text-align: center;
+}
+
 .profile_images img {
   display: block;
   max-width: 90%;
@@ -22,12 +39,12 @@ h2 {
   margin-bottom: 0px;
 }
 
-#featured, #recent, #popular, #trending, #header, #about_us, #contact_us, #regForm, #viewSpot  {
+#featured, #recent, #popular, #trending, #header, #about_us, #contact_us, #regForm, #viewSpot, #spotsReview  {
   background-color: lightgray;
   padding: 20px;
 }
 
-#featured, #recent, #popular, #trending, #about_us, #contact_us, #regForm, #viewSpot {
+#featured, #recent, #popular, #trending, #about_us, #contact_us, #regForm, #viewSpot, #spotsReview {
   border: 2px solid black;
   border-radius: 10px;
   margin: 20px;

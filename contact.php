@@ -34,6 +34,9 @@
       <li class="nav-item">
         <a class="nav-link" href="addSpot.php">Add a Spot!</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="listSpots.php">List of Spots</a>
+      </li>
     </ul>
   </div>
 

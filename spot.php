@@ -38,6 +38,9 @@
       <li class="nav-item">
         <a class="nav-link" href="addSpot.php">Add a Spot!</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="listSpots.php">List of Spots</a>
+      </li>
     </ul>
   </div>
 
@@ -95,24 +98,32 @@ LOGGEDOUT;
     $qry = "SELECT * FROM $table WHERE spot = '$spot'";
     $result = mysqli_query($connect, $qry);
     while ($row = $result->fetch_row()) {
-      $spotBlock = $spotBlock."<div id=\"viewSpot\" class=\"row\">
-      <div>
-        <h1>".$row['1']."</h1>
-      </div>
-      <div class=\"row\">
-        <div class=\"col-sm-6\">
-          <div class=\"embed-responsive embed-responsive-16by9\">
-              <img src=".$row['3']." type=\"image\">
-            </video>
+      $spotBlock = $spotBlock.
+      "<div id=\"spotsReview\" class=\"spotImage\">
+        <div class=\"row\">
+          <div class=\"col-sm-12\">
+            <h2>Review by <b>".$row['0']."</b></h2>
           </div>
-        </div>
-        <div id=\"description\" class=\"col-sm-6\">
-          <p>".$row[5]."</p>
-        </div>
+          <div class=\"embed-responsive\">
+            <img src=".$row['3']." type=\"image\">
+          </div>
+          <div id=\"rating\" class=\"col-sm-12\">
+            <p>Rating: ".$row['4']."</p>
+          </div>
+          <br>
+          <div id=\"description\" class=\"col-sm-12\">
+            <p>".$row['5']."</p>
+          </div>
         </div>
       </div>"; 
     } 
-
+    print <<<TOP
+      <div id="viewSpot" class="row">
+        <div class="col-sm-12">
+          <h1 class="spotTitle">$spot</h1>
+        </div>
+      </div>
+TOP;
     print($spotBlock);
     mysqli_close($connect);
   }
