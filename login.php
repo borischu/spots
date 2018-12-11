@@ -78,28 +78,27 @@ LOGGEDOUT;
 </nav>
 
 <div class="container-fluid">
-
   <form id = "regForm" method = "post" action = "setLoginCookie.php">
     <h2>Spots User Login</h2>
-    <br>
-   <table border = "0">
+    <table border="0">
       <tr>
-        <td> Username </td>
-        <td> <input type = "username" name = "username" id = "username"/></td>
+        <td class="loginForm"><label for="username">Username: </label></td>
+        <td class="loginForm"><input type="text" id="username" name="username" required></td>
       </tr>
       <tr>
-        <td> Password </td>
-        <td> <input type = "password" name = "password" id = "password"/></td>
+        <td class="loginForm"><label for="password">Password: </label></td>
+        <td class="loginForm"><input type="password" id="password" name="password" required></td>
       </tr>
       <tr>
-        <td><br> <input type = "submit" value = "Login" /></td>
-        <td><br> <input type = "reset" value = "Clear" /></td>
+        <td colspan="2" id="buttons" class="loginForm">
+          <input type="submit" name="Login" value="Login">
+          <input type="reset" value="Clear">
+        </td>
       </tr>
-
     </table>
   </form>
-
 </div>
+
 </body>
 <script>
   var spots = ["Billards", "Cain and Abels", "CPE Computer Lab", "Engineering Education and Research Center", "EERC Grad", "J2 Dining Hall", "Jester City Limits", "Jester Central Hall", "OXE", "Union Underground", "Welch Hall"];

@@ -81,25 +81,24 @@ LOGGEDOUT;
 
   <form id = "regForm" method = "post" action = "signUp.php" onsubmit = "return validForm();" >
     <h2>Spots User Registration</h2>
-
     <p>
-      Please make an account so you can keep up with and access all your favorite spots!
+      Make an account to keep up with and access all your favorite spots!
     </p>
     <table border = "0">
-      <tr>
-        <td> Username </td>
-        <td> <input type = "username" name = "username" id = "username"/></td>
+     <tr>
+        <td class="loginForm"><label for="username">Username: </label></td>
+        <td class="loginForm"><input type="text" id="username" name="username" required></td>
       </tr>
       <tr>
-        <td> Password </td>
-        <td> <input type = "password" name = "password" id = "password"/></td>
+        <td class="loginForm"><label for="password">Password: </label></td>
+        <td class="loginForm"><input type="password" id="password" name="password" required></td>
       </tr>
       <tr>
-        <td> Repeat Password </td>
-        <td> <input type = "password" name = "password2" id = "password2"/></td>
+        <td class="loginForm"><label for="password2">Repeat Password: </label></td>
+        <td class="loginForm"><input type="password" id="password2" name="password2" required></td>
       </tr>
       <tr>
-        <td colspan="2">
+        <td colspan="2" class="registerForm">
           <ul>
             <li>The user name must be between 6 and 10 characters long.</li>
             <li>The user name must contain only letters and digits.</li>
@@ -112,8 +111,10 @@ LOGGEDOUT;
         </td>
       </tr>
       <tr>
-        <td> <input type = "submit" value = "Register" /></td>
-        <td> <input type = "reset" value = "Clear" /></td>
+        <td colspan="2" id="buttons" class="loginForm">
+          <input type = "submit" value = "Register" />
+          <input type = "reset" value = "Clear" />
+        </td>
       </tr>
 
     </table>
