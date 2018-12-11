@@ -104,214 +104,171 @@ LOGGEDOUT;
     </div>
   </div>
 
-  <!-- popular -->
-  <div id="popular">
-    <div>
-      <h2> Popular </h2>
-    </div>
-    <div class="container mt-3">
-      <div id="popularCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <div class="row">
-              <div class="col-sm-3">
-                <a href="blank.html"><img src="./img/union_underground.jpg" alt="Union Underground"></a>
-              </div>
-              <div class="col-sm-3">
-                <a href="blank.html"><img src="./img/jester_central.jpg" alt="Jester Central"></a>
-              </div>
-              <div class="col-sm-3">
-                <a href="blank.html"><img src="./img/j2.jpg" alt="Jester 2nd Floor"></a>
-              </div>
-              <div class="col-sm-3">
-                <a href="blank.html"><img src="./img/jcl.jpg" alt="PCL Private Rooms"></a>
-              </div>
-            </div>
-          </div>
-          <div class="carousel-item ">
-            <div class="row">
-              <div class="col-sm-3">
-                <a href="blank.html"><img src="./img/eerc.jpg" alt="EERC Ground Floor"></a>
-              </div>
-              <div class="col-sm-3">
-                <a href="blank.html"><img src="./img/eerc_grad.jpg" alt="EERC Grad Lounge"></a>
-              </div>
-              <div class="col-sm-3">
-                <a href="blank.html"><img src="./img/cain_abels.jpg" alt="Cain & Abels"></a>
-              </div>
-              <div class="col-sm-3">
-                <a href="blank.html"><img src="./img/oxe.jpg" alt="OXE Lounge"></a>
-              </div>
-            </div>
-          </div>
-          <div class="carousel-item ">
-            <div class="row">
-              <div class="col-sm-3">
-                <a href="blank.html"><img src="./img/oxe.jpg" alt="OXE Lounge"></a>
-              </div>
-              <div class="col-sm-3">
-                <a href="blank.html"><img src="./img/billiards.jpg" alt="Gregory Gym Billiards"></a>
-              </div>
-              <div class="col-sm-3">
-                <a href="blank.html"><img src="./img/welch.jpg" alt="Welch Ground Floor"></a>
-              </div>
-              <div class="col-sm-3">
-                <a href="blank.html"><img src="./img/cpe_computer.jpg" alt="CPE Computer Labs"></a>
-              </div>
-            </div>
-          </div>
+<?php
+    $host = "fall-2018.cs.utexas.edu";
+    // $host = "localhost";
+    $user = "cs329e_mitra_borischu";
+    $pwd = "Part&Snake=freer";
+    $dbs = "cs329e_mitra_borischu";
+    $port = "3306";
+
+    $connect = mysqli_connect($host, $user, $pwd, $dbs, $port);
+
+    if (empty($connect)) {
+      die("mysqli_connect failed: " . mysqli_connect_error());
+    }
+
+    $table = "spots";
+
+    // POPULAR 
+    $qry = "SELECT spot, max(image), avg(rating) FROM $table GROUP BY spot ORDER BY avg(rating) DESC LIMIT 12";
+    $result = mysqli_query($connect, $qry);
+
+    $popular = true;
+    $count4 = 1;
+    while ($row = $result->fetch_row()) {
+      if ($popular == true && $count4 == 1) {
+        $popularStr = $popularStr."<div class=\"carousel-item active\">
+                    <div class=\"row\">"; 
+        $popular = false;
+      }
+      else if ($popular == false && $count4 == 5 or $count4 == 9) {
+        $popularStr = $popularStr."<div class=\"carousel-item\">
+                     <div class=\"row\">"; 
+      } 
+      $popularStr = $popularStr."<div class=\"col-sm-3\">
+                    <a href=\"spot.php?spot=".$row[0]."\"><img src=\"".$row[1]."\"></a>
+                    </div>";
+      if ($count4 == 4 or $count4 == 8 or $count == 12) {
+        $popularStr = $popularStr."</div></div>";
+      }
+      $count4 += 1; 
+    } 
+    print <<<TOP
+      <!-- popular -->
+      <div id="popular">
+        <div>
+          <h2> Popular </h2>
         </div>
-        
-        <!-- Left and right controls -->
-        <a class="carousel-control-prev" href="#popularCarousel" data-slide="prev">
-          <span class="carousel-control-prev-icon"></span>
-        </a>
-        <a class="carousel-control-next" href="#popularCarousel" data-slide="next">
-          <span class="carousel-control-next-icon"></span>
-        </a>
-      </div>
+        <div class="container mt-3">
+        <div id="popularCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
+        <div class="carousel-inner">
+TOP;
+    print($popularStr);
+    print <<<BOTTOM
+      </div></div></div>
+            <!-- Left and right controls -->
+      <a class="carousel-control-prev" href="#popularCarousel" data-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+      </a>
+      <a class="carousel-control-next" href="#popularCarousel" data-slide="next">
+        <span class="carousel-control-next-icon"></span>
+      </a>
     </div>
   </div>
+</div>
+BOTTOM;
 
-  <!-- trending -->
-  <div id="trending">
-    <div>
-      <h2> Trending </h2>
-    </div>
-    <div class="container mt-3">
-      <div id="trendingCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
-        <div class="carousel-inner">
-          <div class="carousel-item ">
-            <div class="row">
-              <div class="col-sm-3">
-                <a href="blank.html"><img src="./img/union_underground.jpg" alt="Union Underground"></a>
-              </div>
-              <div class="col-sm-3">
-                <a href="blank.html"><img src="./img/jester_central.jpg" alt="Jester Central"></a>
-              </div>
-              <div class="col-sm-3">
-                <a href="blank.html"><img src="./img/j2.jpg" alt="Jester 2nd Floor"></a>
-              </div>
-              <div class="col-sm-3">
-                <a href="blank.html"><img src="./img/jcl.jpg" alt="PCL Private Rooms"></a>
-              </div>
-            </div>
-          </div>
-          <div class="carousel-item active">
-            <div class="row">
-              <div class="col-sm-3">
-                <a href="blank.html"><img src="./img/eerc.jpg" alt="EERC Ground Floor"></a>
-              </div>
-              <div class="col-sm-3">
-                <a href="blank.html"><img src="./img/eerc_grad.jpg" alt="EERC Grad Lounge"></a>
-              </div>
-              <div class="col-sm-3">
-                <a href="blank.html"><img src="./img/cain_abels.jpg" alt="Cain & Abels"></a>
-              </div>
-              <div class="col-sm-3">
-                <a href="blank.html"><img src="./img/oxe.jpg" alt="OXE Lounge"></a>
-              </div>
-            </div>
-          </div>
-          <div class="carousel-item ">
-            <div class="row">
-              <div class="col-sm-3">
-                <a href="blank.html"><img src="./img/oxe.jpg" alt="OXE Lounge"></a>
-              </div>
-              <div class="col-sm-3">
-                <a href="blank.html"><img src="./img/billiards.jpg" alt="Gregory Gym Billiards"></a>
-              </div>
-              <div class="col-sm-3">
-                <a href="blank.html"><img src="./img/welch.jpg" alt="Welch Ground Floor"></a>
-              </div>
-              <div class="col-sm-3">
-                <a href="blank.html"><img src="./img/cpe_computer.jpg" alt="CPE Computer Labs"></a>
-              </div>
-            </div>
-          </div>
+    // TRENDING 
+    $qry = "SELECT spot, max(image) FROM $table GROUP BY spot ORDER BY count(spot) DESC LIMIT 12";
+    $result = mysqli_query($connect, $qry);
+
+    $trending = true;
+    $count4 = 1;
+    while ($row = $result->fetch_row()) {
+      if ($trending == true && $count4 == 1) {
+        $trendingStr = $trendingStr."<div class=\"carousel-item active\">
+                    <div class=\"row\">"; 
+        $trending = false;
+      }
+      else if ($trending == false && $count4 == 5 or $count4 == 9) {
+        $trendingStr = $trendingStr."<div class=\"carousel-item\">
+                     <div class=\"row\">"; 
+      } 
+      $trendingStr = $trendingStr."<div class=\"col-sm-3\">
+                    <a href=\"spot.php?spot=".$row[0]."\"><img src=\"".$row[1]."\"></a>
+                    </div>";
+      if ($count4 == 4 or $count4 == 8 or $count == 12) {
+        $trendingStr = $trendingStr."</div></div>";
+      }
+      $count4 += 1; 
+    } 
+    print <<<TOP
+      <!-- trending -->
+      <div id="trending">
+        <div>
+          <h2> Trending </h2>
         </div>
-                
-        
-        <!-- Left and right controls -->
-        <a class="carousel-control-prev" href="#trendingCarousel" data-slide="prev">
-          <span class="carousel-control-prev-icon"></span>
-        </a>
-        <a class="carousel-control-next" href="#trendingCarousel" data-slide="next">
-          <span class="carousel-control-next-icon"></span>
-        </a>
-      </div>
+        <div class="container mt-3">
+        <div id="trendingCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
+        <div class="carousel-inner">
+TOP;
+    print($trendingStr);
+    print <<<BOTTOM
+      </div></div></div>
+            <!-- Left and right controls -->
+      <a class="carousel-control-prev" href="#trendingCarousel" data-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+      </a>
+      <a class="carousel-control-next" href="#trendingCarousel" data-slide="next">
+        <span class="carousel-control-next-icon"></span>
+      </a>
     </div>
   </div>
+</div>
+BOTTOM;
 
-  <!-- recently viewed-->
-  <div id="recent">
-    <div>
-      <h2> Recently Viewed </h2>
-    </div>
-    <div class="container mt-3">
-      <div id="recentCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
-        <div class="carousel-inner">
-          <div class="carousel-item ">
-            <div class="row">
-              <div class="col-sm-3">
-                <a href="blank.html"><img src="./img/union_underground.jpg" alt="Union Underground"></a>
-              </div>
-              <div class="col-sm-3">
-                <a href="blank.html"><img src="./img/jester_central.jpg" alt="Jester Central"></a>
-              </div>
-              <div class="col-sm-3">
-                <a href="blank.html"><img src="./img/j2.jpg" alt="Jester 2nd Floor"></a>
-              </div>
-              <div class="col-sm-3">
-                <a href="blank.html"><img src="./img/jcl.jpg" alt="PCL Private Rooms"></a>
-              </div>
-            </div>
-          </div>
-          <div class="carousel-item ">
-            <div class="row">
-              <div class="col-sm-3">
-                <a href="blank.html"><img src="./img/eerc.jpg" alt="EERC Ground Floor"></a>
-              </div>
-              <div class="col-sm-3">
-                <a href="blank.html"><img src="./img/eerc_grad.jpg" alt="EERC Grad Lounge"></a>
-              </div>
-              <div class="col-sm-3">
-                <a href="blank.html"><img src="./img/cain_abels.jpg" alt="Cain & Abels"></a>
-              </div>
-              <div class="col-sm-3">
-                <a href="blank.html"><img src="./img/oxe.jpg" alt="OXE Lounge"></a>
-              </div>
-            </div>
-          </div>
-          <div class="carousel-item active">
-            <div class="row">
-              <div class="col-sm-3">
-                <a href="blank.html"><img src="./img/oxe.jpg" alt="OXE Lounge"></a>
-              </div>
-              <div class="col-sm-3">
-                <a href="blank.html"><img src="./img/billiards.jpg" alt="Gregory Gym Billiards"></a>
-              </div>
-              <div class="col-sm-3">
-                <a href="blank.html"><img src="./img/welch.jpg" alt="Welch Ground Floor"></a>
-              </div>
-              <div class="col-sm-3">
-                <a href="blank.html"><img src="./img/cpe_computer.jpg" alt="CPE Computer Labs"></a>
-              </div>
-            </div>
-          </div>
+    // RECENTLY ADDED 
+    $qry = "SELECT spot, max(image), max(time) FROM $table GROUP BY spot ORDER BY max(time) DESC LIMIT 12";
+    $result = mysqli_query($connect, $qry);
 
-          <!-- Left and right controls -->
-          <a class="carousel-control-prev" href="#recentCarousel" data-slide="prev">
-            <span class="carousel-control-prev-icon"></span>
-          </a>
-          <a class="carousel-control-next" href="#recentCarousel" data-slide="next">
-            <span class="carousel-control-next-icon"></span>
-          </a>
+    $recent = true;
+    $count4 = 1;
+    while ($row = $result->fetch_row()) {
+      if ($recent == true && $count4 == 1) {
+        $recentStr = $recentStr."<div class=\"carousel-item active\">
+                    <div class=\"row\">"; 
+        $recent = false;
+      }
+      else if ($recent == false && $count4 == 5 or $count4 == 9) {
+        $recentStr = $recentStr."<div class=\"carousel-item\">
+                     <div class=\"row\">"; 
+      } 
+      $recentStr = $recentStr."<div class=\"col-sm-3\">
+                    <a href=\"spot.php?spot=".$row[0]."\"><img src=\"".$row[1]."\"></a>
+                    </div>";
+      if ($count4 == 4 or $count4 == 8 or $count == 12) {
+        $recentStr = $recentStr."</div></div>";
+      }
+      $count4 += 1; 
+    } 
+    print <<<TOP
+      <!-- recent -->
+      <div id="recent">
+        <div>
+          <h2> Recently Added </h2>
         </div>
-      </div>
-    </div>  
+        <div class="container mt-3">
+        <div id="recentCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
+        <div class="carousel-inner">
+TOP;
+    print($recentStr);
+    print <<<BOTTOM
+      </div></div></div>
+            <!-- Left and right controls -->
+      <a class="carousel-control-prev" href="#recentCarousel" data-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+      </a>
+      <a class="carousel-control-next" href="#recentCarousel" data-slide="next">
+        <span class="carousel-control-next-icon"></span>
+      </a>
+    </div>
   </div>
-  
+</div>
+BOTTOM;
+
+    mysqli_close($connect);
+?>
   <br />
   <div id="footer">
     <p> &copy; Atul Nayak, Boris Chu 2018 </p>
