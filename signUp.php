@@ -22,7 +22,18 @@
 	if (($file = fopen("passwd.txt", "a")) and !$username_exists) {
 		fwrite($file, "$username:$password\n");
 		fclose($file);
-	}
+		setcookie("loggedIn", "true");
+		$_SESSION["username"] = $username;
 
-	header("Location: login.php");
+		include "home.php";
+		echo '<script>';
+		echo 'alert("Registration Successful! Thank you for signing up!")';
+		echo '</script>';
+	}
+	else {
+		include "create_acct.php";
+		echo '<script>';
+		echo 'alert("Registration Failed. This username is already taken.")';
+		echo '</script>';
+	}
 ?>

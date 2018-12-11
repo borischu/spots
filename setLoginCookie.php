@@ -24,7 +24,11 @@
 		setcookie("loggedIn", "true");
 		$_SESSION["username"] = $username;
 		header("Location: home.php");
-	} else {
-		header("Location: login.php");
+	} 
+	else {
+		include "login.php";
+		echo '<script>';
+		echo 'alert("Login Failed. Either the username or password was incorrect.")';
+		echo '</script>';
 	}
 ?>

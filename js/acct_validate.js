@@ -10,7 +10,7 @@ function validForm () {
       var passupper = /(.*[A-Z].*)/;
       
       if(!username.value.match(user)) {
-        alert("Invalid Input: Username");
+        alert("The username does not follow the guidelines.");
         return false;
       }
     
@@ -20,7 +20,7 @@ function validForm () {
       }
 
       if(!password.value.match(pass)) {
-        alert("Invalid Input: Password");
+        alert("The password does not follow the guidelines.");
         return false;
       }
 
@@ -29,7 +29,5 @@ function validForm () {
         return false;
       }
 
-      alert("User Registration Successful!")
       return true;
-
     }

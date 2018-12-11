@@ -116,7 +116,6 @@ LOGGEDOUT;
           <input type = "reset" value = "Clear" />
         </td>
       </tr>
-
     </table>
   </form>
 

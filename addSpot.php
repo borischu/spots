@@ -87,34 +87,35 @@ LOGGEDOUT;
     $script = $_SERVER['PHP_SELF'];
     print <<<SPOTSFORM
     <form id = "regForm" method = "post" action = "$script">
-      <h2>Add a study spot!</h2>
+      <h2>Add a Study Spot!</h2>
       <br>
       <table border = "0">
         <tr>
-          <td> Study Spot </td>
-          <td> <input type = "text" name = "spot" id="spot"/></td>
+          <td class="addSpotForm"> <label for="spot">Study Spot: </label></td>
+          <td class="loginForm"> <input type="text" name="spot" id="spot"/></td>
         </tr>
         <tr>
-          <td> Location </td>
-          <td> <input type = "text" name = "location" id="location"/></td>
+          <td class="addSpotForm"> <label for="location">Location: </label></td>
+          <td class="loginForm"> <input type ="text" name ="location" id="location"/></td>
         </tr>
         <tr>
-          <td> Link to Image </td>
-          <td> <input type = "link" name = "image" id="image"/></td>
+          <td class="addSpotForm"> <label for="image">Link to Image: </label></td>
+          <td class="loginForm"> <input type="link" name="image" id="image"/></td>
         </tr>
         <tr>
-          <td> Quietness Rating </td>
-          <td> <input type = "number" name = "rating" id="rating"/></td>
+          <td class="addSpotForm"> <label for="rating">Quietness Rating: </label></td>
+          <td class="loginForm"> <input type="number" name="rating" id="rating"/></td>
         </tr>
         <tr>
-          <td> Review </td>
-          <td> <input type = "text" name = "review" id="review"/></td>
+          <td class="addSpotForm"> <label for="review">Review: </label></td>
+          <td class="loginForm"> <input type="text" name="review" id="review"/></td>
         </tr>
         <tr>
-          <td><br><input type="submit" value="Submit" name="submit"></td>
-          <td><br><input type = "reset" value = "Clear" /></td>
+          <td class="loginForm" colspan="2">
+            <input type="submit" value="Submit" name="submit">
+            <input type = "reset" value = "Clear" />
+          </td>
         </tr>
-
       </table>
     </form>
 SPOTSFORM;
