@@ -101,7 +101,7 @@ LOGGEDOUT;
     $table = "spots";
     $qry = "SELECT spot, count(username), avg(rating) FROM $table GROUP BY spot";
     $result = mysqli_query($connect, $qry);
-    $str = "<table id = \"table\"><tr><th>Spot</th><th>Total Reviewers</th><th>Average Ratings</th></tr>";
+    $str = '<table id="reviewTable" class="table table-hover text-centered"><tr><th>Spot</th><th>Total Reviewers</th><th>Average Ratings</th></tr>';
     while ($row = $result->fetch_row()) {
       $str = $str."<tr><td><a href=\"./spot.php?spot=".$row[0]."\">".$row[0]."</a></td><td>".$row[1]."</td><td>".$row[2]."</td></tr>"; 
     } 
