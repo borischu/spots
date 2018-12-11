@@ -102,11 +102,11 @@ LOGGEDOUT;
         <input type="link" class="form-control" id="image" name="image">
       </div>
       <div class="form-group">
-        <label for="rating">Location:</label>
+        <label for="rating">Overall Rating:</label>
         <input type="number" class="form-control" id="rating" name="rating">
       </div>
       <div class="form-group">
-        <label for="comment">Comment:</label>
+        <label for="comment">Comments:</label>
         <textarea class="form-control" rows="5" id="comment"></textarea>
       </div>
       <div class="form-group">
