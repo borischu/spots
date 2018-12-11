@@ -78,88 +78,42 @@ LOGGEDOUT;
 
 <?php
   if (isset($_SESSION["username"])) {
-    $script = $_SERVER['PHP_SELF'];
-    print <<<SPOTSFORM
-    <form id = "regForm" method = "post" action = "$script">
-      <h2>Add a study spot!</h2>
-      <br>
-      <table border = "0">
-        <tr>
-          <td> Study Spot </td>
-          <td> <input type = "text" name = "spot" id="spot"/></td>
-        </tr>
-        <tr>
-          <td> Location </td>
-          <td> <input type = "text" name = "location" id="location"/></td>
-        </tr>
-        <tr>
-          <td> Link to Image </td>
-          <td> <input type = "link" name = "image" id="image"/></td>
-        </tr>
-        <tr>
-          <td> Quietness Rating </td>
-          <td> <input type = "number" name = "rating" id="rating"/></td>
-        </tr>
-        <tr>
-          <td> Review </td>
-          <td> <input type = "text" name = "review" id="review"/></td>
-        </tr>
-        <tr>
-          <td><br><input type="submit" value="Submit" name="submit"></td>
-          <td><br><input type = "reset" value = "Clear" /></td>
-        </tr>
 
-      </table>
-    </form>
-SPOTSFORM;
+    $host = "fall-2018.cs.utexas.edu";
+    // $host = "localhost";
+    $user = "cs329e_mitra_borischu";
+    $pwd = "Part&Snake=freer";
+    $dbs = "cs329e_mitra_borischu";
+    $port = "3306";
 
-    if(isset($_POST["submit"])) {
-      
-      $host = "fall-2018.cs.utexas.edu";
-      // $host = "localhost";
-      $user = "cs329e_mitra_borischu";
-      $pwd = "Part&Snake=freer";
-      $dbs = "cs329e_mitra_borischu";
-      $port = "3306";
+    $connect = mysqli_connect($host, $user, $pwd, $dbs, $port);
 
-      $connect = mysqli_connect ($host, $user, $pwd, $dbs, $port);
-
-      if (empty($connect)) {
-        die("mysqli_connect failed: " . mysqli_connect_error());
-      }
-
-      extract($_POST);
-      $table = "spots";
-      $username = $_SESSION["username"];
-      $spot = $_POST["spot"];
-      $location = $_POST["location"];
-      $image = $_POST["image"];
-      $rating = $_POST["rating"];
-      $review = $_POST["review"];
-      $time = time(); // time post request was made 
-
-      $stmt = mysqli_prepare ($connect, "INSERT INTO $table VALUES (?, ?, ?, ?, ?, ?, ?)");
-      mysqli_stmt_bind_param ($stmt, 'ssssisi', $username, $spot, $location, $image, $rating, $review, $time);
-      mysqli_stmt_execute($stmt);
-      if(mysqli_affected_rows($connect) == 0 || mysqli_affected_rows($connect) == -1) {
-      print "One of the inputs was not the correct data type. ID must be an 4 number integer and GPA must be a 2 decimal float. LAST, FIRST, and MAJOR must all be strings.";
-      }
-      else {
-        print "The insertion was successful!<br/><br />\n";
-      }
-      mysqli_stmt_close($stmt);
-      // Close connection to the database
-      mysqli_close($connect);
+    if (empty($connect)) {
+      die("mysqli_connect failed: " . mysqli_connect_error());
     }
-  } else {
-    print <<<NOTLOGGEDIN
-      <p>Log into add a spot for other people to see!</p>
-NOTLOGGEDIN;
+
+    $table = "spots";
+    $qry = "SELECT spot, count(username), avg(rating) FROM $table GROUP BY spot";
+    $result = mysqli_query($connect, $qry);
+    $str = "<table id = \"table\"><tr><th>Spot</th><th>Total Reviewers</th><th>Average Ratings</th></tr>";
+    while ($row = $result->fetch_row()) {
+      $str = $str."<tr><td><a href=\"./spot.php?spot=".$row[0]."\">".$row[0]."</a></td><td>".$row[1]."</td><td>".$row[2]."</td></tr>"; 
+    } 
+    print <<<TOP
+      <div id="viewSpot" class="row">
+        <div class="col-sm-12">
+          <h1 class="spotTitle">List of Spots</h1>
+        </div>
+      </div>
+      <div id="spotsReview">
+TOP;
+    print($str);
+    print <<<BOTTOM
+      </div>
+BOTTOM;
+    mysqli_close($connect);
   }
-
 ?>
-
-
 </div>
 </body>
 <script>

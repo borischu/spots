@@ -81,6 +81,7 @@ LOGGEDOUT;
   if (isset($_SESSION["username"]) && isset($_SESSION["spot"])) {
 
     $host = "fall-2018.cs.utexas.edu";
+    // $host = "localhost";
     $user = "cs329e_mitra_borischu";
     $pwd = "Part&Snake=freer";
     $dbs = "cs329e_mitra_borischu";
@@ -93,7 +94,6 @@ LOGGEDOUT;
     }
 
     $spot = str_replace('$20', ' ', $_SESSION["spot"]);
-    // add data to a table
     $table = "spots";
     $qry = "SELECT * FROM $table WHERE spot = '$spot'";
     $result = mysqli_query($connect, $qry);
