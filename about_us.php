@@ -78,7 +78,7 @@
     </div>
   </div>
 
-  <br>
+  <br/>
   <div id="footer">
     <p> &copy; Atul Nayak, Boris Chu 2018 </p>
   </div>
