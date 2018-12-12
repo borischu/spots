@@ -66,7 +66,7 @@
       <div class="col-sm-12"> <b>Atul Nayak:</b><br>
       2300 Nueces Street <br>
       Phone: 281-394-2758<br>
-      Email: a.nayak511@utexas.edu
+      Email: <a href="mailto:a.nayak511@utexas.edu" target="_top">a.nayak511@utexas.edu</a>
       </div>
     </div>
 
@@ -75,7 +75,7 @@
       <div class="col-sm-12"> <br><b>Boris Chu:</b><br>
       2822 Rio Grande St. <br>
       Phone: 832-605-4350<br>
-      Email: boriskchu@utexas.edu
+      Email: <a href="mailto:boriskchu@utexas.edu" target="_top">boriskchu@utexas.edu</a>
       </div>
     </div>
 
