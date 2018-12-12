@@ -38,8 +38,10 @@ function spotForm() {
       var location = document.getElementById("location");
       var image = document.getElementById("image");
       var rating = document.getElementById("rating");
+      var review = document.getElementById("review");
       var url = /^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/;
-      var rate = /^([1-9]|10)$/; 
+      var rate = /^([1-9]|10)$/;
+      var reviewLength = /^(.|\n){1,500}$/;
 
       if(!spot.value) {
         alert("Must enter a spot.");
@@ -63,6 +65,11 @@ function spotForm() {
 
       if(image.value && !image.value.match(url)) {
         alert("Must enter a link for image.");
+        return false;
+      }
+
+      if(review.value && !review.value.match(reviewLength)) {
+        alert("Review must be under 500 characters");
         return false;
       }
 

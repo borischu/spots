@@ -87,8 +87,8 @@ TOP;
           <input type="number" class="form-control" id="rating" name="rating" placeholder="10">
         </div>
         <div class="form-group">
-          <label for="review">Comments:</label>
-          <textarea class="form-control" rows="5" id="review" placeholder="Write your review here!"></textarea>
+          <label for="review">Review:</label>
+          <textarea class="form-control" rows="5" id="review" name="review" placeholder="Write your review here!"></textarea>
         </div>
         <div class="form-group">
           <input type="submit" value="Submit" name="submit">
@@ -123,7 +123,7 @@ TOP;
           <input type="number" class="form-control" id="rating" name="rating" placeholder="10">
         </div>
         <div class="form-group">
-          <label for="review">Comments:</label>
+          <label for="review">Review:</label>
           <textarea type="text" class="form-control" rows="5" id="review" name="review" placeholder="Write your review here!"></textarea>
         </div>
         <div class="form-group">
