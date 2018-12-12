@@ -48,22 +48,8 @@
 
 <?php
   $_SESSION["spot"] = $_GET["spot"];
-
-  // $host = "fall-2018.cs.utexas.edu";
-  $host = "localhost";
-  $user = "cs329e_mitra_borischu";
-  $pwd = "Part&Snake=freer";
-  $dbs = "cs329e_mitra_borischu";
-  $port = "3306";
-
-  $connect = mysqli_connect($host, $user, $pwd, $dbs, $port);
-
-  if (empty($connect)) {
-    die("mysqli_connect failed: " . mysqli_connect_error());
-  }
-
+  include 'connectDB.php';
   $spot = str_replace('$20', ' ', $_SESSION["spot"]);
-  $table = "spots";
   $qry = "SELECT * FROM $table WHERE spot = '$spot' ORDER BY time DESC";
   $result = mysqli_query($connect, $qry);
   while ($row = $result->fetch_row()) {
