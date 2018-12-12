@@ -10,6 +10,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
   <script type ="text/javascript" src="./js/validate.js"></script>
+  <link rel="icon" href="./img/logo2.png">
   <link rel="stylesheet" type="text/css" href="./css/styles.css">
 </head>
 <body>
@@ -74,15 +75,15 @@ TOP;
         </datalist>
         </div>
         <div class="form-group">
-          <label for="location">Location:</label>
-          <input type="link" class="form-control" id="location" name="location" placeholder="cs.utexas.edu">
+          <label for="location">Website Link:</label>
+          <input type="link" class="form-control" id="location" name="location" placeholder="https://www.example.edu">
         </div>
         <div class="form-group">
           <label for="image">Link to Image:</label>
-          <input type="link" class="form-control" id="image" name="image" placeholder="https://www.aiaaustin.org/sites/default/files/styles/story_image/public/useruploads/1/4/dell_atrium_620x390_smaller.jpeg">
+          <input type="link" class="form-control" id="image" name="image" placeholder="https://www.example.org/picture.jpeg">
         </div>
         <div class="form-group">
-          <label for="rating">Overall Rating: (1-10)</label>
+          <label for="rating">Overall Rating (1-10): </label>
           <input type="number" class="form-control" id="rating" name="rating" placeholder="10">
         </div>
         <div class="form-group">
@@ -110,15 +111,15 @@ TOP;
         </datalist>
         </div>
         <div class="form-group">
-          <label for="location">Location:</label>
-          <input type="link" class="form-control" id="location" name="location" placeholder="cs.utexas.edu">
+          <label for="location">Website Link:</label>
+          <input type="link" class="form-control" id="location" name="location" placeholder="https://www.example.edu">
         </div>
         <div class="form-group">
           <label for="image">Link to Image:</label>
-          <input class="form-control" id="image" name="image" placeholder="https://www.aiaaustin.org/sites/default/files/styles/story_image/public/useruploads/1/4/dell_atrium_620x390_smaller.jpeg">
+          <input class="form-control" id="image" name="image" placeholder="https://www.example.org/picture.jpeg">
         </div>
         <div class="form-group">
-          <label for="rating">Overall Rating: (1-10)</label>
+          <label for="rating">Overall Rating (1-10):</label>
           <input type="number" class="form-control" id="rating" name="rating" placeholder="10">
         </div>
         <div class="form-group">
@@ -181,7 +182,7 @@ NOTLOGGEDIN;
 
 ?>
 </div>
-<br><br><br>
+<br>
 <div id="footer">
   <p> &copy; Atul Nayak, Boris Chu 2018 </p>
 </div>

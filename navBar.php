@@ -10,7 +10,7 @@
   print <<<TOP
   <form class="form-inline my-2 my-lg-0">
       <div class="autocomplete">
-        <input class="form-control mr-sm-2 spotList" type="text" placeholder="Search" list="spotList" onchange="window.location.href='/spot.php?spot=' + this.value;">
+        <input class="form-control mr-sm-2 spotList" type="text" placeholder="Search" list="spotList" onchange="window.location.href='spot.php?spot=' + this.value;">
         <datalist id="spotList">
 TOP;
   print($spotList);

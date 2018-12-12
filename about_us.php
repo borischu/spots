@@ -9,6 +9,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+  <link rel="icon" href="./img/logo2.png">
   <link rel="stylesheet" type="text/css" href="./css/styles.css">
 </head>
 <body>
@@ -59,7 +60,7 @@
       <div id="description" class="col-sm-6">
         <h2>Atul Nayak</h2>
         <br />
-        <p>Atul is a fourth-year Chemical Engineering major. He has worked at Capital One as both a business analyst and a data analyst. He also likes dogs. </p>
+        <p>Atul is a fourth-year Chemical Engineering major. He has worked at Capital One as both a business analyst and a data analyst. He prefers dogs over cats.  </p>
       </div>
     </div>
     <br />

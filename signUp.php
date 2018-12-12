@@ -1,5 +1,5 @@
 <?php
-
+	session_start();
 	extract($_POST);
 	$username = $_POST["username"];
 	$password = crypt($_POST["password"]);
@@ -22,12 +22,13 @@
 	if (($file = fopen("passwd.txt", "a")) and !$username_exists) {
 		fwrite($file, "$username:$password\n");
 		fclose($file);
+		setcookie("loggedIn", "true");
 		$_SESSION["username"] = $username;
 
-		include "login.php";
-		echo '<script>';
-		echo 'alert("Registration Successful! Thank you for signing up!")';
-		echo '</script>';
+		echo "<script>
+		alert('Registration successful! Thank you for signing up!');
+		window.location.href='home.php';
+		</script>";
 	}
 	else {
 		include "create_acct.php";

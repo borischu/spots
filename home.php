@@ -9,6 +9,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+  <link rel="icon" href="./img/logo2.png">
   <link rel="stylesheet" type="text/css" href="./css/styles.css">
 </head>
 <body>
@@ -56,12 +57,14 @@
     <div class="row">
       <div class="col-sm-6">
         <div class="embed-responsive embed-responsive-16by9">
-          <iframe class="embed-responsive-item" src="./img/featured.mp4" allowfullscreen></iframe>
+          <video controls>
+            <source src="./img/featured.mp4" type="video/mp4">
+          </video>
         </div>
       </div>
       <div id="description" class="col-sm-6">
         <h2><a class="featuredTitle" href="spot.php?spot=GDC Atrium">GDC Atrium</a></h2>
-        <p>The Gates Dell Complex is one of the newest buildings on campus. It is the home of the university's computer science department. Be one of the first people to rate this study spot on campus! </p>
+        <p>The Gates Dell Complex is one of the newest buildings on campus. It is the home of the university's computer science department. The design of the complex emphasizes modern uses of materials found in the Spanish Mediterranean buildings at the core of the campus. There are also large windows that give the complex a light, open appearance. </p>
       </div>
     </div>
   </div>

@@ -10,6 +10,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
   <script type ="text/javascript" src="./js/validate.js"></script>
+  <link rel="icon" href="./img/logo2.png">
   <link rel="stylesheet" type="text/css" href="./css/styles.css">
 </head>
 <body>
@@ -101,7 +102,7 @@ BOTTOM;
 <?php
   print <<<ADD
     <br>
-    <input type="add" value="Add Review" name="addReview" onclick="location.href='./addSpot.php?spot=$spot'">
+    <input type="button" value="Add Review" name="addReview" onclick="location.href='./addSpot.php?spot=$spot'">
 ADD;
 ?>
 </body>
