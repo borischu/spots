@@ -1,6 +1,6 @@
 <?php
   include 'connectDB.php';
-  $qry = "SELECT DISTINCT(spot), time FROM $table ORDER BY time DESC";
+  $qry = "SELECT DISTINCT(spot), max(time) FROM $table GROUP BY spot ORDER BY max(time) DESC";
   $result = mysqli_query($connect, $qry);
 
   while ($row = $result->fetch_row()) {
