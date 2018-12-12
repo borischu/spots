@@ -77,7 +77,11 @@ h2 {
   border: 2px solid black;
 }
 
-#contact_info {
+#contact_info_atul {
+  display: contents;
+}
+
+#contact_info_boris {
   display: contents;
 }
 

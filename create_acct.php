@@ -8,7 +8,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-  <script type ="text/javascript" src="./js/validate.js"></script>
+  <script src="./js/validate.js"></script>
   <link rel="icon" href="./img/logo2.png">
   <link rel="stylesheet" type="text/css" href="./css/styles.css">
 </head>
@@ -51,7 +51,7 @@
     <p>
       Make an account to keep up with and access all your favorite spots!
     </p>
-    <table border = "0">
+    <table>
      <tr>
         <td class="loginForm"><label for="username">Username: </label></td>
         <td class="loginForm"><input type="text" id="username" name="username" required onchange="callServer();"></td>
@@ -88,7 +88,7 @@
 
 </div>
 </body>
-<br>
+<br/>
 <div id="footer">
     <p> &copy; Atul Nayak, Boris Chu 2018 </p>
 </div>

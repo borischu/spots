@@ -16,7 +16,6 @@ TOP;
   print($spotList);
   print <<<BOTTOM
         </datalist> 
-        </input>
       </div>
   </form>
 BOTTOM;

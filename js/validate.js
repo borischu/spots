@@ -57,7 +57,7 @@ function spotForm() {
       }
 
       if(location.value && !location.value.match(url)) {
-        alert("Must enter a link for location.");
+        alert("Must enter a link to a website.");
         return false;
       }
 

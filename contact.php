@@ -62,7 +62,7 @@
     </div>
 
     <br />-->
-    <div id="contact_info" class="row">
+    <div id="contact_info_atul" class="row">
       <div class="col-sm-12"> <b>Atul Nayak:</b><br>
       2300 Nueces Street <br>
       Phone: 281-394-2758<br>
@@ -71,7 +71,7 @@
     </div>
 
     <br />
-    <div id="contact_info" class="row">
+    <div id="contact_info_boris" class="row">
       <div class="col-sm-12"> <br><b>Boris Chu:</b><br>
       2822 Rio Grande St. <br>
       Phone: 832-605-4350<br>

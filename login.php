@@ -47,7 +47,7 @@
 <div class="container-fluid">
   <form id = "regForm" method = "post" action = "setLoginCookie.php">
     <h2>Spots User Login</h2>
-    <table border="0">
+    <table>
       <tr>
         <td class="loginForm"><label for="username">Username: </label></td>
         <td class="loginForm"><input type="text" id="username" name="username" required></td>

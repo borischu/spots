@@ -9,7 +9,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-  <script type ="text/javascript" src="./js/validate.js"></script>
+  <script src="./js/validate.js"></script>
   <link rel="icon" href="./img/logo2.png">
   <link rel="stylesheet" type="text/css" href="./css/styles.css">
 </head>
@@ -53,7 +53,8 @@
   $result = mysqli_query($connect, $qry);
   $str = '<table id="reviewTable" class="table table-hover text-centered"><tr><th>Spot</th><th>Total Reviewers</th><th>Average Ratings</th></tr>';
   while ($row = $result->fetch_row()) {
-    $str = $str."<tr><td><a href=\"./spot.php?spot=".$row[0]."\">".$row[0]."</a></td><td>".$row[1]."</td><td>".$row[2]."</td></tr>"; 
+    $href = str_replace(' ', '%20', $row[0]);
+    $str = $str."<tr><td><a href=\"./spot.php?spot=".$href."\">".$row[0]."</a></td><td>".$row[1]."</td><td>".$row[2]."</td></tr>"; 
   } 
   print <<<TOP
     <div id="viewSpot" class="row">
@@ -76,6 +77,6 @@ BOTTOM;
     <p> &copy; Atul Nayak, Boris Chu 2018 </p>
 </div>
 </body>
-<br>
+<br/>
 </html>
 

@@ -63,7 +63,7 @@
         </div>
       </div>
       <div id="description" class="col-sm-6">
-        <h2><a class="featuredTitle" href="spot.php?spot=GDC Atrium">GDC Atrium</a></h2>
+        <h2><a class="featuredTitle" href="spot.php?spot=GDC%20Atrium">GDC Atrium</a></h2>
         <p>The Gates Dell Complex is one of the newest buildings on campus. It is the home of the university's computer science department. The design of the complex emphasizes modern uses of materials found in the Spanish Mediterranean buildings at the core of the campus. There are also large windows that give the complex a light, open appearance. </p>
       </div>
     </div>
@@ -87,13 +87,14 @@
       $popularStr = $popularStr."<div class=\"carousel-item\">
                    <div class=\"row\">"; 
     }
+    $href = str_replace(' ', '%20', $row[0]);
     if ($row[1] == null || !exif_imagetype($row[1])) {
       $popularStr = $popularStr."<div class=\"col-sm-3\">
-                    <a href=\"spot.php?spot=".$row[0]."\"><img src=\"./img/nothing.jpeg\"></a>
+                    <a href=\"spot.php?spot=".$href."\"><img src=\"./img/nothing.jpeg\" alt=\"popular\"></a>
                     </div>";
     } else {
       $popularStr = $popularStr."<div class=\"col-sm-3\">
-                    <a href=\"spot.php?spot=".$row[0]."\"><img src=\"".$row[1]."\"></a>
+                    <a href=\"spot.php?spot=".$href."\"><img src=\"".$row[1]."\" alt=\"popular\"></a>
                     </div>";
     }
     if ($count4 == 4 or $count4 == 8 or $count == 12) {
@@ -142,13 +143,14 @@ BOTTOM;
       $trendingStr = $trendingStr."<div class=\"carousel-item\">
                    <div class=\"row\">"; 
     } 
+    $href = str_replace(' ', '%20', $row[0]);
     if ($row[1] == null || !exif_imagetype($row[1])) {
       $trendingStr = $trendingStr."<div class=\"col-sm-3\">
-                    <a href=\"spot.php?spot=".$row[0]."\"><img src=\"./img/nothing.jpeg\"></a>
+                    <a href=\"spot.php?spot=".$href."\"><img src=\"./img/nothing.jpeg\" alt=\"trending\"></a>
                     </div>";
     } else {
       $trendingStr = $trendingStr."<div class=\"col-sm-3\">
-                    <a href=\"spot.php?spot=".$row[0]."\"><img src=\"".$row[1]."\"></a>
+                    <a href=\"spot.php?spot=".$href."\"><img src=\"".$row[1]."\" alt=\"trending\"></a>
                     </div>";
     }
     if ($count4 == 4 or $count4 == 8 or $count == 12) {
@@ -197,13 +199,14 @@ BOTTOM;
       $recentStr = $recentStr."<div class=\"carousel-item\">
                    <div class=\"row\">"; 
     } 
+    $href = str_replace(' ', '%20', $row[0]);
     if ($row[1] == null || !exif_imagetype($row[1])) {
       $recentStr = $recentStr."<div class=\"col-sm-3\">
-                    <a href=\"spot.php?spot=".$row[0]."\"><img src=\"./img/nothing.jpeg\"></a>
+                    <a href=\"spot.php?spot=".$href."\"><img src=\"./img/nothing.jpeg\" alt=\"recent\"></a>
                     </div>";
     } else {
       $recentStr = $recentStr."<div class=\"col-sm-3\">
-                    <a href=\"spot.php?spot=".$row[0]."\"><img src=\"".$row[1]."\"></a>
+                    <a href=\"spot.php?spot=".$href."\"><img src=\"".$row[1]."\" alt=\"recent\"></a>
                     </div>";
     }
     if ($count4 == 4 or $count4 == 8 or $count == 12) {

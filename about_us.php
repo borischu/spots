@@ -57,7 +57,7 @@
           <img class="img-responsive" src="https://fall-2018.cs.utexas.edu/cs329e-mitra/asn627/hwk1/Pic_Of_Me.jpg" alt="atul"/>
         </div>
       </div>
-      <div id="description" class="col-sm-6">
+      <div id="descriptionAtul" class="col-sm-6">
         <h2>Atul Nayak</h2>
         <br />
         <p>Atul is a fourth-year Chemical Engineering major. He has worked at Capital One as both a business analyst and a data analyst. He prefers dogs over cats.  </p>
@@ -70,7 +70,7 @@
           <img class="img-responsive" src="https://fall-2018.cs.utexas.edu/cs329e-mitra/borischu/hwk1/boris.jpg" alt="boris"/>
         </div>
       </div>
-      <div id="description" class="col-sm-6">
+      <div id="descriptionBoris" class="col-sm-6">
         <h2>Boris Chu</h2>
         <br />
         <p>Boris is also a fourth-year Chemical Engineering major. He has worked at Samsung and Squarecap. He is also very interested in investing and even has his own hedge fund. </p>
