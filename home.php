@@ -87,7 +87,7 @@
       $popularStr = $popularStr."<div class=\"carousel-item\">
                    <div class=\"row\">"; 
     }
-    if ($row[1] == null) {
+    if ($row[1] == null || !exif_imagetype($row[1])) {
       $popularStr = $popularStr."<div class=\"col-sm-3\">
                     <a href=\"spot.php?spot=".$row[0]."\"><img src=\"./img/nothing.jpeg\"></a>
                     </div>";
@@ -142,7 +142,7 @@ BOTTOM;
       $trendingStr = $trendingStr."<div class=\"carousel-item\">
                    <div class=\"row\">"; 
     } 
-    if ($row[1] == null) {
+    if ($row[1] == null || !exif_imagetype($row[1])) {
       $trendingStr = $trendingStr."<div class=\"col-sm-3\">
                     <a href=\"spot.php?spot=".$row[0]."\"><img src=\"./img/nothing.jpeg\"></a>
                     </div>";
@@ -197,7 +197,7 @@ BOTTOM;
       $recentStr = $recentStr."<div class=\"carousel-item\">
                    <div class=\"row\">"; 
     } 
-    if ($row[1] == null) {
+    if ($row[1] == null || !exif_imagetype($row[1])) {
       $recentStr = $recentStr."<div class=\"col-sm-3\">
                     <a href=\"spot.php?spot=".$row[0]."\"><img src=\"./img/nothing.jpeg\"></a>
                     </div>";

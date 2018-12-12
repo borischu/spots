@@ -61,7 +61,7 @@
           <h2>Review by <b>".$row[0]."</b></h2>
         </div>";
     // conditionals based on if image, location or reviews are provided
-    if ($row[3]) {
+    if ($row[3] && exif_imagetype($row[3])) {
       $spotBlock = $spotBlock.
       "<div class=\"embed-responsive\">
         <img src=".$row[3]." type=\"image\">
