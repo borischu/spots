@@ -46,22 +46,21 @@
       </div>
   </form>
 <?php
-  if(isset($_COOKIE["loggedIn"])) {
-    print <<<LOGGEDIN
-    <div class="dropdown">
-        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-            <img src="./img/0.jpg" alt="boris pic" style="width:35px">
-        </button>
-        <ul class="dropdown-menu dropdown-menu-right">
-          <li><a class="dropdown-item" href="blank.html">Profile</a></li>
-          <li><a class="dropdown-item" href="blank.html">Settings</a></li>
-          <li><a class="dropdown-item" href="logOut.php">Logout</a></li>
-        </ul>
-    </div>
-LOGGEDIN;
+  if ($_COOKIE["loggedIn"]) {
+    $str = "<div class=\"dropdown\">
+          <button type=\"button\" class=\"btn btn-primary dropdown-toggle\" data-toggle=\"dropdown\">
+              <img src=\"./img/0.jpg\" alt=\"profile pic\" style=\"width:35px\">
+          </button>
+          <ul class=\"dropdown-menu dropdown-menu-right\">
+            <li style=\"text-align:center;\">Logged in as\n<b>"; 
+    $str = $str.$_SESSION["username"]."</b></li>
+            <li><a class=\"dropdown-item\" href=\"logOut.php\" style=\"text-align:center;\">Logout</a></li>
+          </ul>
+      </div>";
+    print($str);
   } else {
-    print <<<LOGGEDOUT
-    <div class="btn-group">
+      print <<<LOGGEDOUT
+      <div class="btn-group">
         <ul class="navbar-nav">
           <li class="nav-item">
             <a class="nav-link" href="./create_acct.php">Register</a>

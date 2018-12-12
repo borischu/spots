@@ -12,7 +12,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
   <script type ="text/javascript" src="./js/search.js"></script>
-  <script type ="text/javascript" src="./js/acct_validate.js"></script>
+  <script type ="text/javascript" src="./js/validate.js"></script>
   <link rel="stylesheet" type="text/css" href="./css/home.css">
 </head>
 <body>
@@ -50,22 +50,21 @@
       </div>
   </form>
 <?php
-  if(isset($_COOKIE["loggedIn"])) {
-    print <<<LOGGEDIN
-    <div class="dropdown">
-        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-            <img src="./img/0.jpg" alt="boris pic" style="width:35px">
-        </button>
-        <ul class="dropdown-menu dropdown-menu-right">
-          <li><a class="dropdown-item" href="blank.html">Profile</a></li>
-          <li><a class="dropdown-item" href="blank.html">Settings</a></li>
-          <li><a class="dropdown-item" href="logOut.php">Logout</a></li>
-        </ul>
-    </div>
-LOGGEDIN;
+  if ($_COOKIE["loggedIn"]) {
+    $str = "<div class=\"dropdown\">
+          <button type=\"button\" class=\"btn btn-primary dropdown-toggle\" data-toggle=\"dropdown\">
+              <img src=\"./img/0.jpg\" alt=\"profile pic\" style=\"width:35px\">
+          </button>
+          <ul class=\"dropdown-menu dropdown-menu-right\">
+            <li style=\"text-align:center;\">Logged in as\n<b>"; 
+    $str = $str.$_SESSION["username"]."</b></li>
+            <li><a class=\"dropdown-item\" href=\"logOut.php\" style=\"text-align:center;\">Logout</a></li>
+          </ul>
+      </div>";
+    print($str);
   } else {
-    print <<<LOGGEDOUT
-    <div class="btn-group">
+      print <<<LOGGEDOUT
+      <div class="btn-group">
         <ul class="navbar-nav">
           <li class="nav-item">
             <a class="nav-link" href="./create_acct.php">Register</a>
@@ -85,29 +84,62 @@ LOGGEDOUT;
 <?php
   if (isset($_SESSION["username"])) {
     $script = $_SERVER['PHP_SELF'];
+    if (isset($_GET["spot"])) {
+      $spot = str_replace('$20', ' ', $_GET["spot"]);
+      print <<<SPOTFORM
+      <form id = "regForm" method = "post" action = "$script" onsubmit = "return spotForm();">
+        <h2>Add a Study Spot!</h2>
+        <br>
+        <div class="form-group">
+          <label for="spot">Study Spot:</label>
+          <input type="text" class="form-control" id="spot" name="spot" value="$spot">
+        </div>
+        <div class="form-group">
+          <label for="location">Location:</label>
+          <input type="text" class="form-control" id="location" name="location" placeholder="cs.utexas.edu">
+        </div>
+        <div class="form-group">
+          <label for="image">Link to Image:</label>
+          <input type="link" class="form-control" id="image" name="image" placeholder="https://www.aiaaustin.org/sites/default/files/styles/story_image/public/useruploads/1/4/dell_atrium_620x390_smaller.jpeg">
+        </div>
+        <div class="form-group">
+          <label for="rating">Overall Rating: (1-10)</label>
+          <input type="number" class="form-control" id="rating" name="rating" placeholder="10">
+        </div>
+        <div class="form-group">
+          <label for="review">Comments:</label>
+          <textarea class="form-control" rows="5" id="review" placeholder="Write your review here!"></textarea>
+        </div>
+        <div class="form-group">
+          <input type="submit" value="Submit" name="submit">
+          <input type = "reset" value = "Clear" />
+        </div>
+      </form>
+SPOTFORM;
+    } else {
     print <<<SPOTSFORM
-    <form id = "regForm" method = "post" action = "$script">
+    <form id = "regForm" method = "post" action = "$script" onsubmit = "return spotForm();">
       <h2>Add a Study Spot!</h2>
       <br>
       <div class="form-group">
         <label for="spot">Study Spot:</label>
-        <input type="text" class="form-control" id="spot" name="spot">
+        <input type="text" class="form-control" id="spot" name="spot" placeholder="GDC Atrium">
       </div>
       <div class="form-group">
         <label for="location">Location:</label>
-        <input type="text" class="form-control" id="location" name="location">
+        <input type="text" class="form-control" id="location" name="location" placeholder="cs.utexas.edu">
       </div>
       <div class="form-group">
         <label for="image">Link to Image:</label>
-        <input type="link" class="form-control" id="image" name="image">
+        <input type="link" class="form-control" id="image" name="image" placeholder="https://www.aiaaustin.org/sites/default/files/styles/story_image/public/useruploads/1/4/dell_atrium_620x390_smaller.jpeg">
       </div>
       <div class="form-group">
-        <label for="rating">Overall Rating:</label>
-        <input type="number" class="form-control" id="rating" name="rating">
+        <label for="rating">Overall Rating: (1-10)</label>
+        <input type="number" class="form-control" id="rating" name="rating" placeholder="10">
       </div>
       <div class="form-group">
-        <label for="review">Comments:</label>
-        <textarea class="form-control" rows="5" id="review"></textarea>
+        <label for="review">Review:</label>
+        <textarea class="form-control" rows="5" id="review" placeholder="Write your review here!"></textarea>
       </div>
       <div class="form-group">
         <input type="submit" value="Submit" name="submit">
@@ -115,6 +147,7 @@ LOGGEDOUT;
       </div>
     </form>
 SPOTSFORM;
+    }
 
   if(isset($_POST["submit"])) {
     
@@ -145,10 +178,15 @@ SPOTSFORM;
     mysqli_stmt_bind_param ($stmt, 'ssssisi', $username, $spot, $location, $image, $rating, $review, $time);
     mysqli_stmt_execute($stmt);
     if(mysqli_affected_rows($connect) == 0 || mysqli_affected_rows($connect) == -1) {
-    print "One of the inputs was not the correct data type. ID must be an 4 number integer and GPA must be a 2 decimal float. LAST, FIRST, and MAJOR must all be strings.";
+      echo '<script>';
+      echo 'alert("There is a problem. Try again later.")';
+      echo '</script>';
     }
     else {
-      print "The insertion was successful!<br/><br />\n";
+      echo '<script>';
+      echo 'alert("Added review! Thank you!");';
+      echo "window.location.href = 'spot.php?spot=".$spot."';";
+      echo '</script>';
     }
     mysqli_stmt_close($stmt);
     // Close connection to the database
@@ -171,8 +209,10 @@ NOTLOGGEDIN;
   }
 
 ?>
-
-
+</div>
+<br />
+<div id="footer">
+  <p> &copy; Atul Nayak, Boris Chu 2018 </p>
 </div>
 </body>
 <script>

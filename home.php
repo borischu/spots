@@ -1,3 +1,6 @@
+<?php
+  session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -48,18 +51,17 @@
 
 <?php
   if ($_COOKIE["loggedIn"]) {
-      print <<<LOGGEDIN
-      <div class="dropdown">
-          <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-              <img src="./img/0.jpg" alt="boris pic" style="width:35px">
+    $str = "<div class=\"dropdown\">
+          <button type=\"button\" class=\"btn btn-primary dropdown-toggle\" data-toggle=\"dropdown\">
+              <img src=\"./img/0.jpg\" alt=\"profile pic\" style=\"width:35px\">
           </button>
-          <ul class="dropdown-menu dropdown-menu-right">
-            <li><a class="dropdown-item" href="blank.html">Profile</a></li>
-            <li><a class="dropdown-item" href="blank.html">Settings</a></li>
-            <li><a class="dropdown-item" href="logOut.php">Logout</a></li>
+          <ul class=\"dropdown-menu dropdown-menu-right\">
+            <li style=\"text-align:center;\">Logged in as\n<b>"; 
+    $str = $str.$_SESSION["username"]."</b></li>
+            <li><a class=\"dropdown-item\" href=\"logOut.php\" style=\"text-align:center;\">Logout</a></li>
           </ul>
-      </div>
-LOGGEDIN;
+      </div>";
+    print($str);
   } else {
       print <<<LOGGEDOUT
       <div class="btn-group">
@@ -98,7 +100,7 @@ LOGGEDOUT;
         </div>
       </div>
       <div id="description" class="col-sm-6">
-        <h2><a href="spot.php?spot=GDC Atrium">GDC Atrium</a></h2>
+        <h2><a class="featuredTitle" href="spot.php?spot=GDC Atrium">GDC Atrium</a></h2>
         <p>The Gates Dell Complex is one of the newest buildings on campus. It is the home of the university's computer science department. Be one of the first people to rate this study spot on campus! </p>
       </div>
     </div>
@@ -135,10 +137,16 @@ LOGGEDOUT;
     else if ($popular == false && $count4 == 5 or $count4 == 9) {
       $popularStr = $popularStr."<div class=\"carousel-item\">
                    <div class=\"row\">"; 
-    } 
-    $popularStr = $popularStr."<div class=\"col-sm-3\">
-                  <a href=\"spot.php?spot=".$row[0]."\"><img src=\"".$row[1]."\"></a>
-                  </div>";
+    }
+    if ($row[1] == null) {
+      $popularStr = $popularStr."<div class=\"col-sm-3\">
+                    <a href=\"spot.php?spot=".$row[0]."\"><img src=\"./img/nothing.jpeg\"></a>
+                    </div>";
+    } else {
+      $popularStr = $popularStr."<div class=\"col-sm-3\">
+                    <a href=\"spot.php?spot=".$row[0]."\"><img src=\"".$row[1]."\"></a>
+                    </div>";
+    }
     if ($count4 == 4 or $count4 == 8 or $count == 12) {
       $popularStr = $popularStr."</div></div>";
     }
@@ -185,9 +193,15 @@ BOTTOM;
       $trendingStr = $trendingStr."<div class=\"carousel-item\">
                    <div class=\"row\">"; 
     } 
-    $trendingStr = $trendingStr."<div class=\"col-sm-3\">
-                  <a href=\"spot.php?spot=".$row[0]."\"><img src=\"".$row[1]."\"></a>
-                  </div>";
+    if ($row[1] == null) {
+      $trendingStr = $trendingStr."<div class=\"col-sm-3\">
+                    <a href=\"spot.php?spot=".$row[0]."\"><img src=\"./img/nothing.jpeg\"></a>
+                    </div>";
+    } else {
+      $trendingStr = $trendingStr."<div class=\"col-sm-3\">
+                    <a href=\"spot.php?spot=".$row[0]."\"><img src=\"".$row[1]."\"></a>
+                    </div>";
+    }
     if ($count4 == 4 or $count4 == 8 or $count == 12) {
       $trendingStr = $trendingStr."</div></div>";
     }
@@ -234,9 +248,15 @@ BOTTOM;
       $recentStr = $recentStr."<div class=\"carousel-item\">
                    <div class=\"row\">"; 
     } 
-    $recentStr = $recentStr."<div class=\"col-sm-3\">
-                  <a href=\"spot.php?spot=".$row[0]."\"><img src=\"".$row[1]."\"></a>
-                  </div>";
+    if ($row[1] == null) {
+      $recentStr = $recentStr."<div class=\"col-sm-3\">
+                    <a href=\"spot.php?spot=".$row[0]."\"><img src=\"./img/nothing.jpeg\"></a>
+                    </div>";
+    } else {
+      $recentStr = $recentStr."<div class=\"col-sm-3\">
+                    <a href=\"spot.php?spot=".$row[0]."\"><img src=\"".$row[1]."\"></a>
+                    </div>";
+    }
     if ($count4 == 4 or $count4 == 8 or $count == 12) {
       $recentStr = $recentStr."</div></div>";
     }
@@ -269,11 +289,10 @@ BOTTOM;
 
   mysqli_close($connect);
 ?>
-  <br />
-  <div id="footer">
-    <p> &copy; Atul Nayak, Boris Chu 2018 </p>
-  </div>
-
+</div>
+<br />
+<div id="footer">
+  <p> &copy; Atul Nayak, Boris Chu 2018 </p>
 </div>
 </body>
 <script>

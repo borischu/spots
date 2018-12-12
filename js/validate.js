@@ -4,7 +4,7 @@ function validForm () {
       var password = document.getElementById("password");
       var password2 = document.getElementById("password2");
       var user = /^([a-z]|[A-Z])([a-z]|[A-Z]|[0-9]){7,49}$/;
-      var pass = /^([a-z]|[A-Z]|[0-9]){7,31}$/;
+      var pass = /^([a-z]|[A-Z]|[0-9]){8,32}$/;
       var passnum = /(.*[0-9].*)/;
       var passlow = /(.*[a-z].*)/;
       var passupper = /(.*[A-Z].*)/;
@@ -30,7 +30,45 @@ function validForm () {
       }
 
       return true;
-    }
+}
+
+function spotForm() {
+      var form = document.getElementById("regForm");
+      var spot = document.getElementById("spot");
+      var location = document.getElementById("location");
+      var image = document.getElementById("image");
+      var rating = document.getElementById("rating");
+      var url = /^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/;
+      var rate = /^([1-9]|10)$/; 
+
+      if(!spot.value) {
+        alert("Must enter a spot.");
+        return false;
+      }
+
+      if(!rating.value) {
+        alert("Must enter a rating.");
+        return false;
+      }
+
+      if(!rating.value.match(rate)){
+        alert("Rating must be from 1 to 10.");
+        return false;
+      }
+
+      if(location.value && !location.value.match(url)) {
+        alert("Must enter a link for location.");
+        return false;
+      }
+
+      if(image.value && !image.value.match(url)) {
+        alert("Must enter a link for image.");
+        return false;
+      }
+
+      return true;
+
+}
 
 var xhr; 
 if (window.ActiveXObject) { 
