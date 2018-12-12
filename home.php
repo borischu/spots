@@ -1,6 +1,4 @@
-<?php
-  session_start();
-?>
+<?php session_start();?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,8 +9,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-  <script type ="text/javascript" src="./js/search.js"></script>
-  <link rel="stylesheet" type="text/css" href="./css/home.css">
+  <link rel="stylesheet" type="text/css" href="./css/styles.css">
 </head>
 <body>
   
@@ -42,47 +39,12 @@
       </li>
     </ul>
   </div>
-
-  <form autocomplete="off" class="form-inline my-2 my-lg-0">
-      <div class="autocomplete">
-        <input id="searchSpots" class="form-control mr-sm-2" type="text" placeholder="Search">
-      </div>
-  </form>
-
-<?php
-  if ($_COOKIE["loggedIn"]) {
-    $str = "<div class=\"dropdown\">
-          <button type=\"button\" class=\"btn btn-primary dropdown-toggle\" data-toggle=\"dropdown\">
-              <img src=\"./img/0.jpg\" alt=\"profile pic\" style=\"width:35px\">
-          </button>
-          <ul class=\"dropdown-menu dropdown-menu-right\">
-            <li style=\"text-align:center;\">Logged in as\n<b>"; 
-    $str = $str.$_SESSION["username"]."</b></li>
-            <li><a class=\"dropdown-item\" href=\"logOut.php\" style=\"text-align:center;\">Logout</a></li>
-          </ul>
-      </div>";
-    print($str);
-  } else {
-      print <<<LOGGEDOUT
-      <div class="btn-group">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link" href="./create_acct.php">Register</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="./login.php">Login</a>
-          </li>
-        </ul>
-      </div>
-LOGGEDOUT;
-  }
-?>
-
+<?php include 'navBar.php';?>
 </nav>
 
 <div class="container-fluid">
   <div id="header" class="row">
-    <p class="col-sm-12"> <strong>Spots</strong> is a website that streamlines the process of finding an optimal study spot that best fits with your preferences. <br /> Check out some of your favorite spots down below! </p>
+    <p class="col-sm-12"> <strong>Spots</strong> is a website for UT Austin students that streamlines the process of finding an optimal study spot that best fits with your preferences. <br /> Check out some of your favorite spots down below! </p>
   </div>
 
   <div id="featured" class="row">
@@ -94,9 +56,7 @@ LOGGEDOUT;
     <div class="row">
       <div class="col-sm-6">
         <div class="embed-responsive embed-responsive-16by9">
-          <video controls>
-            <source src="./img/featured.mp4" type="video/mp4">
-          </video>
+          <iframe class="embed-responsive-item" src="./img/featured.mp4" allowfullscreen></iframe>
         </div>
       </div>
       <div id="description" class="col-sm-6">
@@ -107,8 +67,8 @@ LOGGEDOUT;
   </div>
 
 <?php
-  $host = "fall-2018.cs.utexas.edu";
-  // $host = "localhost";
+  // $host = "fall-2018.cs.utexas.edu";
+  $host = "localhost";
   $user = "cs329e_mitra_borischu";
   $pwd = "Part&Snake=freer";
   $dbs = "cs329e_mitra_borischu";
@@ -286,7 +246,6 @@ TOP;
 </div>
 </div>
 BOTTOM;
-
   mysqli_close($connect);
 ?>
 </div>
@@ -295,8 +254,4 @@ BOTTOM;
   <p> &copy; Atul Nayak, Boris Chu 2018 </p>
 </div>
 </body>
-<script>
-  var spots = ["Billards", "Cain and Abels", "CPE Computer Lab", "Engineering Education and Research Center", "EERC Grad", "J2 Dining Hall", "Jester City Limits", "Jester Central Hall", "OXE", "Union Underground", "Welch Hall"];
-  autocomplete(document.getElementById("searchSpots"), spots);
-</script>
 </html>

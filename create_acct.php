@@ -8,9 +8,8 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-  <script type ="text/javascript" src="./js/search.js"></script>
   <script type ="text/javascript" src="./js/validate.js"></script>
-  <link rel="stylesheet" type="text/css" href="./css/home.css">
+  <link rel="stylesheet" type="text/css" href="./css/styles.css">
 </head>
 <body>
   
@@ -41,39 +40,7 @@
     </ul>
   </div>
 
-  <form autocomplete="off" class="form-inline my-2 my-lg-0">
-      <div class="autocomplete">
-        <input id="searchSpots" class="form-control mr-sm-2" type="text" placeholder="Search">
-      </div>
-  </form>
-<?php
-  if ($_COOKIE["loggedIn"]) {
-    $str = "<div class=\"dropdown\">
-          <button type=\"button\" class=\"btn btn-primary dropdown-toggle\" data-toggle=\"dropdown\">
-              <img src=\"./img/0.jpg\" alt=\"profile pic\" style=\"width:35px\">
-          </button>
-          <ul class=\"dropdown-menu dropdown-menu-right\">
-            <li style=\"text-align:center;\">Logged in as\n<b>"; 
-    $str = $str.$_SESSION["username"]."</b></li>
-            <li><a class=\"dropdown-item\" href=\"logOut.php\" style=\"text-align:center;\">Logout</a></li>
-          </ul>
-      </div>";
-    print($str);
-  } else {
-      print <<<LOGGEDOUT
-      <div class="btn-group">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link" href="./create_acct.php">Register</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="./login.php">Login</a>
-          </li>
-        </ul>
-      </div>
-LOGGEDOUT;
-  }
-?>
+<?php include 'navBar.php';?>
 </nav>
 
 <div class="container-fluid">
@@ -124,9 +91,5 @@ LOGGEDOUT;
 <div id="footer">
     <p> &copy; Atul Nayak, Boris Chu 2018 </p>
 </div>
-<script>
-  var spots = ["Billards", "Cain and Abels", "CPE Computer Lab", "Engineering Education and Research Center", "EERC Grad", "J2 Dining Hall", "Jester City Limits", "Jester Central Hall", "OXE", "Union Underground", "Welch Hall"];
-  autocomplete(document.getElementById("searchSpots"), spots);
-</script>
 </html>
 
