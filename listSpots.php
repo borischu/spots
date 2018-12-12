@@ -51,7 +51,7 @@
   include 'connectDB.php';
   $qry = "SELECT spot, count(username), avg(rating) FROM $table GROUP BY spot ORDER BY avg(rating) DESC";
   $result = mysqli_query($connect, $qry);
-  $str = '<table id="reviewTable" class="table table-hover text-centered"><tr><th>Spot</th><th>Total Reviewers</th><th>Average Ratings</th></tr>';
+  $str = '<table id="reviewTable" class="table table-hover text-centered"><tr><th>Spot</th><th>Total Reviewers</th><th>Average Rating</th></tr>';
   while ($row = $result->fetch_row()) {
     $href = str_replace(' ', '%20', $row[0]);
     $str = $str."<tr><td><a href=\"./spot.php?spot=".$href."\">".$row[0]."</a></td><td>".$row[1]."</td><td>".$row[2]."</td></tr>"; 
