@@ -36,10 +36,10 @@
         <a class="nav-link" href="contact.php">Contact Us</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="addSpot.php">Add a Spot!</a>
+        <a class="nav-link" href="listSpots.php">List of Spots</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="listSpots.php">List of Spots</a>
+        <a class="nav-link" href="addSpot.php">Review a Spot!</a>
       </li>
     </ul>
   </div>
@@ -116,57 +116,57 @@ LOGGEDOUT;
     </form>
 SPOTSFORM;
 
-    if(isset($_POST["submit"])) {
-      
-      // $host = "fall-2018.cs.utexas.edu";
-      $host = "localhost";
-      $user = "cs329e_mitra_borischu";
-      $pwd = "Part&Snake=freer";
-      $dbs = "cs329e_mitra_borischu";
-      $port = "3306";
+  if(isset($_POST["submit"])) {
+    
+    $host = "fall-2018.cs.utexas.edu";
+    // $host = "localhost";
+    $user = "cs329e_mitra_borischu";
+    $pwd = "Part&Snake=freer";
+    $dbs = "cs329e_mitra_borischu";
+    $port = "3306";
 
-      $connect = mysqli_connect ($host, $user, $pwd, $dbs, $port);
+    $connect = mysqli_connect ($host, $user, $pwd, $dbs, $port);
 
-      if (empty($connect)) {
-        die("mysqli_connect failed: " . mysqli_connect_error());
-      }
-
-      extract($_POST);
-      $table = "spots";
-      $username = $_SESSION["username"];
-      $spot = $_POST["spot"];
-      $location = $_POST["location"];
-      $image = $_POST["image"];
-      $rating = $_POST["rating"];
-      $review = $_POST["review"];
-      $time = time(); // time post request was made 
-
-      $stmt = mysqli_prepare ($connect, "INSERT INTO $table VALUES (?, ?, ?, ?, ?, ?, ?)");
-      mysqli_stmt_bind_param ($stmt, 'ssssisi', $username, $spot, $location, $image, $rating, $review, $time);
-      mysqli_stmt_execute($stmt);
-      if(mysqli_affected_rows($connect) == 0 || mysqli_affected_rows($connect) == -1) {
-      print "One of the inputs was not the correct data type. ID must be an 4 number integer and GPA must be a 2 decimal float. LAST, FIRST, and MAJOR must all be strings.";
-      }
-      else {
-        print "The insertion was successful!<br/><br />\n";
-      }
-      mysqli_stmt_close($stmt);
-      // Close connection to the database
-      mysqli_close($connect);
+    if (empty($connect)) {
+      die("mysqli_connect failed: " . mysqli_connect_error());
     }
-  } else {
-    print <<<NOTLOGGEDIN
-    <div class="container-fluid">
-      <div id="contact_us">
-        <div class="row">
-          <div class="col-sm-12 align-self-center">
-            <div class="spotTitle">
-              Log in to add a Spot for other people to see!
-            </div>
+
+    extract($_POST);
+    $table = "spots";
+    $username = $_SESSION["username"];
+    $spot = $_POST["spot"];
+    $location = $_POST["location"];
+    $image = $_POST["image"];
+    $rating = $_POST["rating"];
+    $review = $_POST["review"];
+    $time = time(); // time post request was made 
+
+    $stmt = mysqli_prepare ($connect, "INSERT INTO $table VALUES (?, ?, ?, ?, ?, ?, ?)");
+    mysqli_stmt_bind_param ($stmt, 'ssssisi', $username, $spot, $location, $image, $rating, $review, $time);
+    mysqli_stmt_execute($stmt);
+    if(mysqli_affected_rows($connect) == 0 || mysqli_affected_rows($connect) == -1) {
+    print "One of the inputs was not the correct data type. ID must be an 4 number integer and GPA must be a 2 decimal float. LAST, FIRST, and MAJOR must all be strings.";
+    }
+    else {
+      print "The insertion was successful!<br/><br />\n";
+    }
+    mysqli_stmt_close($stmt);
+    // Close connection to the database
+    mysqli_close($connect);
+  }
+} else {
+  print <<<NOTLOGGEDIN
+  <div class="container-fluid">
+    <div id="contact_us">
+      <div class="row">
+        <div class="col-sm-12 align-self-center">
+          <div class="spotTitle">
+            Log in to review a Spot for other people to see!
           </div>
         </div>
       </div>
     </div>
+  </div>
 NOTLOGGEDIN;
   }
 

@@ -32,10 +32,10 @@
         <a class="nav-link" href="contact.php">Contact Us</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="addSpot.php">Add a Spot!</a>
+        <a class="nav-link" href="listSpots.php">List of Spots</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="listSpots.php">List of Spots</a>
+        <a class="nav-link" href="addSpot.php">Review a Spot!</a>
       </li>
     </ul>
   </div>
@@ -105,169 +105,169 @@ LOGGEDOUT;
   </div>
 
 <?php
-    // $host = "fall-2018.cs.utexas.edu";
-    $host = "localhost";
-    $user = "cs329e_mitra_borischu";
-    $pwd = "Part&Snake=freer";
-    $dbs = "cs329e_mitra_borischu";
-    $port = "3306";
+  $host = "fall-2018.cs.utexas.edu";
+  // $host = "localhost";
+  $user = "cs329e_mitra_borischu";
+  $pwd = "Part&Snake=freer";
+  $dbs = "cs329e_mitra_borischu";
+  $port = "3306";
 
-    $connect = mysqli_connect($host, $user, $pwd, $dbs, $port);
+  $connect = mysqli_connect($host, $user, $pwd, $dbs, $port);
 
-    if (empty($connect)) {
-      die("mysqli_connect failed: " . mysqli_connect_error());
+  if (empty($connect)) {
+    die("mysqli_connect failed: " . mysqli_connect_error());
+  }
+
+  $table = "spots";
+
+  // POPULAR 
+  $qry = "SELECT spot, max(image), avg(rating) FROM $table GROUP BY spot ORDER BY avg(rating) DESC LIMIT 12";
+  $result = mysqli_query($connect, $qry);
+
+  $popular = true;
+  $count4 = 1;
+  while ($row = $result->fetch_row()) {
+    if ($popular == true && $count4 == 1) {
+      $popularStr = $popularStr."<div class=\"carousel-item active\">
+                  <div class=\"row\">"; 
+      $popular = false;
     }
-
-    $table = "spots";
-
-    // POPULAR 
-    $qry = "SELECT spot, max(image), avg(rating) FROM $table GROUP BY spot ORDER BY avg(rating) DESC LIMIT 12";
-    $result = mysqli_query($connect, $qry);
-
-    $popular = true;
-    $count4 = 1;
-    while ($row = $result->fetch_row()) {
-      if ($popular == true && $count4 == 1) {
-        $popularStr = $popularStr."<div class=\"carousel-item active\">
-                    <div class=\"row\">"; 
-        $popular = false;
-      }
-      else if ($popular == false && $count4 == 5 or $count4 == 9) {
-        $popularStr = $popularStr."<div class=\"carousel-item\">
-                     <div class=\"row\">"; 
-      } 
-      $popularStr = $popularStr."<div class=\"col-sm-3\">
-                    <a href=\"spot.php?spot=".$row[0]."\"><img src=\"".$row[1]."\"></a>
-                    </div>";
-      if ($count4 == 4 or $count4 == 8 or $count == 12) {
-        $popularStr = $popularStr."</div></div>";
-      }
-      $count4 += 1; 
+    else if ($popular == false && $count4 == 5 or $count4 == 9) {
+      $popularStr = $popularStr."<div class=\"carousel-item\">
+                   <div class=\"row\">"; 
     } 
-    print <<<TOP
-      <!-- popular -->
-      <div id="popular">
-        <div>
-          <h2> Popular </h2>
-        </div>
-        <div class="container mt-3">
-        <div id="popularCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
-        <div class="carousel-inner">
+    $popularStr = $popularStr."<div class=\"col-sm-3\">
+                  <a href=\"spot.php?spot=".$row[0]."\"><img src=\"".$row[1]."\"></a>
+                  </div>";
+    if ($count4 == 4 or $count4 == 8 or $count == 12) {
+      $popularStr = $popularStr."</div></div>";
+    }
+    $count4 += 1; 
+  } 
+  print <<<TOP
+    <!-- popular -->
+    <div id="popular">
+      <div>
+        <h2> Popular </h2>
+      </div>
+      <div class="container mt-3">
+      <div id="popularCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
+      <div class="carousel-inner">
 TOP;
-    print($popularStr);
-    print <<<BOTTOM
-      </div></div></div>
-            <!-- Left and right controls -->
-      <a class="carousel-control-prev" href="#popularCarousel" data-slide="prev">
-        <span class="carousel-control-prev-icon"></span>
-      </a>
-      <a class="carousel-control-next" href="#popularCarousel" data-slide="next">
-        <span class="carousel-control-next-icon"></span>
-      </a>
-    </div>
+  print($popularStr);
+  print <<<BOTTOM
+    </div></div></div>
+          <!-- Left and right controls -->
+    <a class="carousel-control-prev" href="#popularCarousel" data-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </a>
+    <a class="carousel-control-next" href="#popularCarousel" data-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </a>
   </div>
+</div>
 </div>
 BOTTOM;
 
-    // TRENDING 
-    $qry = "SELECT spot, max(image) FROM $table GROUP BY spot ORDER BY count(spot) DESC LIMIT 12";
-    $result = mysqli_query($connect, $qry);
+  // TRENDING 
+  $qry = "SELECT spot, max(image) FROM $table GROUP BY spot ORDER BY count(spot) DESC LIMIT 12";
+  $result = mysqli_query($connect, $qry);
 
-    $trending = true;
-    $count4 = 1;
-    while ($row = $result->fetch_row()) {
-      if ($trending == true && $count4 == 1) {
-        $trendingStr = $trendingStr."<div class=\"carousel-item active\">
-                    <div class=\"row\">"; 
-        $trending = false;
-      }
-      else if ($trending == false && $count4 == 5 or $count4 == 9) {
-        $trendingStr = $trendingStr."<div class=\"carousel-item\">
-                     <div class=\"row\">"; 
-      } 
-      $trendingStr = $trendingStr."<div class=\"col-sm-3\">
-                    <a href=\"spot.php?spot=".$row[0]."\"><img src=\"".$row[1]."\"></a>
-                    </div>";
-      if ($count4 == 4 or $count4 == 8 or $count == 12) {
-        $trendingStr = $trendingStr."</div></div>";
-      }
-      $count4 += 1; 
+  $trending = true;
+  $count4 = 1;
+  while ($row = $result->fetch_row()) {
+    if ($trending == true && $count4 == 1) {
+      $trendingStr = $trendingStr."<div class=\"carousel-item active\">
+                  <div class=\"row\">"; 
+      $trending = false;
+    }
+    else if ($trending == false && $count4 == 5 or $count4 == 9) {
+      $trendingStr = $trendingStr."<div class=\"carousel-item\">
+                   <div class=\"row\">"; 
     } 
-    print <<<TOP
-      <!-- trending -->
-      <div id="trending">
-        <div>
-          <h2> Trending </h2>
-        </div>
-        <div class="container mt-3">
-        <div id="trendingCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
-        <div class="carousel-inner">
+    $trendingStr = $trendingStr."<div class=\"col-sm-3\">
+                  <a href=\"spot.php?spot=".$row[0]."\"><img src=\"".$row[1]."\"></a>
+                  </div>";
+    if ($count4 == 4 or $count4 == 8 or $count == 12) {
+      $trendingStr = $trendingStr."</div></div>";
+    }
+    $count4 += 1; 
+  } 
+  print <<<TOP
+    <!-- trending -->
+    <div id="trending">
+      <div>
+        <h2> Trending </h2>
+      </div>
+      <div class="container mt-3">
+      <div id="trendingCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
+      <div class="carousel-inner">
 TOP;
-    print($trendingStr);
-    print <<<BOTTOM
-      </div></div></div>
-            <!-- Left and right controls -->
-      <a class="carousel-control-prev" href="#trendingCarousel" data-slide="prev">
-        <span class="carousel-control-prev-icon"></span>
-      </a>
-      <a class="carousel-control-next" href="#trendingCarousel" data-slide="next">
-        <span class="carousel-control-next-icon"></span>
-      </a>
-    </div>
+  print($trendingStr);
+  print <<<BOTTOM
+    </div></div></div>
+          <!-- Left and right controls -->
+    <a class="carousel-control-prev" href="#trendingCarousel" data-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </a>
+    <a class="carousel-control-next" href="#trendingCarousel" data-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </a>
   </div>
+</div>
 </div>
 BOTTOM;
 
-    // RECENTLY ADDED 
-    $qry = "SELECT spot, max(image), max(time) FROM $table GROUP BY spot ORDER BY max(time) DESC LIMIT 12";
-    $result = mysqli_query($connect, $qry);
+  // RECENTLY ADDED 
+  $qry = "SELECT spot, max(image), max(time) FROM $table GROUP BY spot ORDER BY max(time) DESC LIMIT 12";
+  $result = mysqli_query($connect, $qry);
 
-    $recent = true;
-    $count4 = 1;
-    while ($row = $result->fetch_row()) {
-      if ($recent == true && $count4 == 1) {
-        $recentStr = $recentStr."<div class=\"carousel-item active\">
-                    <div class=\"row\">"; 
-        $recent = false;
-      }
-      else if ($recent == false && $count4 == 5 or $count4 == 9) {
-        $recentStr = $recentStr."<div class=\"carousel-item\">
-                     <div class=\"row\">"; 
-      } 
-      $recentStr = $recentStr."<div class=\"col-sm-3\">
-                    <a href=\"spot.php?spot=".$row[0]."\"><img src=\"".$row[1]."\"></a>
-                    </div>";
-      if ($count4 == 4 or $count4 == 8 or $count == 12) {
-        $recentStr = $recentStr."</div></div>";
-      }
-      $count4 += 1; 
+  $recent = true;
+  $count4 = 1;
+  while ($row = $result->fetch_row()) {
+    if ($recent == true && $count4 == 1) {
+      $recentStr = $recentStr."<div class=\"carousel-item active\">
+                  <div class=\"row\">"; 
+      $recent = false;
+    }
+    else if ($recent == false && $count4 == 5 or $count4 == 9) {
+      $recentStr = $recentStr."<div class=\"carousel-item\">
+                   <div class=\"row\">"; 
     } 
-    print <<<TOP
-      <!-- recent -->
-      <div id="recent">
-        <div>
-          <h2> Recently Reviewed </h2>
-        </div>
-        <div class="container mt-3">
-        <div id="recentCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
-        <div class="carousel-inner">
+    $recentStr = $recentStr."<div class=\"col-sm-3\">
+                  <a href=\"spot.php?spot=".$row[0]."\"><img src=\"".$row[1]."\"></a>
+                  </div>";
+    if ($count4 == 4 or $count4 == 8 or $count == 12) {
+      $recentStr = $recentStr."</div></div>";
+    }
+    $count4 += 1; 
+  } 
+  print <<<TOP
+    <!-- recent -->
+    <div id="recent">
+      <div>
+        <h2> Recently Reviewed </h2>
+      </div>
+      <div class="container mt-3">
+      <div id="recentCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
+      <div class="carousel-inner">
 TOP;
-    print($recentStr);
-    print <<<BOTTOM
-      </div></div></div>
-            <!-- Left and right controls -->
-      <a class="carousel-control-prev" href="#recentCarousel" data-slide="prev">
-        <span class="carousel-control-prev-icon"></span>
-      </a>
-      <a class="carousel-control-next" href="#recentCarousel" data-slide="next">
-        <span class="carousel-control-next-icon"></span>
-      </a>
-    </div>
+  print($recentStr);
+  print <<<BOTTOM
+    </div></div></div>
+          <!-- Left and right controls -->
+    <a class="carousel-control-prev" href="#recentCarousel" data-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </a>
+    <a class="carousel-control-next" href="#recentCarousel" data-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </a>
   </div>
+</div>
 </div>
 BOTTOM;
 
-    mysqli_close($connect);
+  mysqli_close($connect);
 ?>
   <br />
   <div id="footer">

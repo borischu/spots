@@ -36,10 +36,10 @@
         <a class="nav-link" href="contact.php">Contact Us</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="addSpot.php">Add a Spot!</a>
+        <a class="nav-link" href="listSpots.php">List of Spots</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="listSpots.php">List of Spots</a>
+        <a class="nav-link" href="addSpot.php">Review a Spot!</a>
       </li>
     </ul>
   </div>
@@ -84,8 +84,9 @@ LOGGEDOUT;
 
 <?php
   $_SESSION["spot"] = $_GET["spot"];
-  // $host = "fall-2018.cs.utexas.edu";
-  $host = "localhost";
+
+  $host = "fall-2018.cs.utexas.edu";
+  // $host = "localhost";
   $user = "cs329e_mitra_borischu";
   $pwd = "Part&Snake=freer";
   $dbs = "cs329e_mitra_borischu";
@@ -112,7 +113,7 @@ LOGGEDOUT;
           <img src=".$row[3]." type=\"image\">
         </div>
         <div id=\"location\" class=\"col-sm-12\">
-          <a target=\"blank\" href=".$row[2].">Location</a>
+          <a target=\"blank\" href=".$row[2].">Link to Location</a>
         </div>
         <div id=\"rating\" class=\"col-sm-12\">
           <p>Rating: ".$row[4]."</p>
@@ -120,10 +121,8 @@ LOGGEDOUT;
         <br>
         <div id=\"description\" class=\"col-sm-12\">
           <p>".$row[5]."</p>
-        </div>
-      </div>
-    </div>"; 
-  } 
+        </div>";
+  }
   print <<<TOP
     <div id="viewSpot" class="row">
       <div class="col-sm-12">
@@ -133,13 +132,16 @@ LOGGEDOUT;
 TOP;
   print($spotBlock);
   mysqli_close($connect);
+  print <<<BOTTOM
+    </div>
+BOTTOM;
 ?>
 </div>
+</body>
 <br>
 <div id="footer">
-    <p> &copy; Atul Nayak, Boris Chu 2018 </p>
+  <p> &copy; Atul Nayak, Boris Chu 2018 </p>
 </div>
-</body>
 <script>
   var spots = ["Billards", "Cain and Abels", "CPE Computer Lab", "Engineering Education and Research Center", "EERC Grad", "J2 Dining Hall", "Jester City Limits", "Jester Central Hall", "OXE", "Union Underground", "Welch Hall"];
   autocomplete(document.getElementById("searchSpots"), spots);

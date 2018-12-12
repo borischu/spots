@@ -36,10 +36,10 @@
         <a class="nav-link" href="contact.php">Contact Us</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="addSpot.php">Add a Spot!</a>
+        <a class="nav-link" href="listSpots.php">List of Spots</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="listSpots.php">List of Spots</a>
+        <a class="nav-link" href="addSpot.php">Review a Spot!</a>
       </li>
     </ul>
   </div>
@@ -83,8 +83,8 @@ LOGGEDOUT;
 <div class="container-fluid">
 
 <?php
-  // $host = "fall-2018.cs.utexas.edu";
-  $host = "localhost";
+  $host = "fall-2018.cs.utexas.edu";
+  // $host = "localhost";
   $user = "cs329e_mitra_borischu";
   $pwd = "Part&Snake=freer";
   $dbs = "cs329e_mitra_borischu";
@@ -97,7 +97,7 @@ LOGGEDOUT;
   }
 
   $table = "spots";
-  $qry = "SELECT spot, count(username), avg(rating) FROM $table GROUP BY spot";
+  $qry = "SELECT spot, count(username), avg(rating) FROM $table GROUP BY spot ORDER BY avg(rating) DESC";
   $result = mysqli_query($connect, $qry);
   $str = '<table id="reviewTable" class="table table-hover text-centered"><tr><th>Spot</th><th>Total Reviewers</th><th>Average Ratings</th></tr>';
   while ($row = $result->fetch_row()) {
@@ -111,12 +111,12 @@ LOGGEDOUT;
     </div>
     <div id="spotsReview">
 TOP;
-  print($str);
-  print <<<BOTTOM
-    </table>
-    </div>
+    print($str);
+    print <<<BOTTOM
+      </table>
+      </div>
 BOTTOM;
-  mysqli_close($connect);
+    mysqli_close($connect);
 ?>
 </div>
 <br>
