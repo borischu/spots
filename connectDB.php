@@ -1,9 +1,11 @@
 <?php
-	$host = "fall-2018.cs.utexas.edu";
+	$url = parse_url(getenv("CLEARDB_DATABASE_URL")); 
+
+	$host = "$url["host"];";
 	// $host = "localhost";
-	$user = "cs329e_mitra_borischu";
-	$pwd = "Part&Snake=freer";
-	$dbs = "cs329e_mitra_borischu";
+	$user = $url["user"];
+	$pwd = $url["pass"];
+	$dbs = substr($url["path"], 1);
 	$port = "3306";
 
 	$connect = mysqli_connect ($host, $user, $pwd, $dbs, $port);
