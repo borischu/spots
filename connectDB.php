@@ -1,7 +1,7 @@
 <?php
 	$url = parse_url(getenv("CLEARDB_DATABASE_URL")); 
 
-	$host = "$url["host"];";
+	$host = $url["host"];
 	// $host = "localhost";
 	$user = $url["user"];
 	$pwd = $url["pass"];
