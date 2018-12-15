@@ -19,10 +19,6 @@
 -- Current Database: `cs329e_mitra_borischu`
 --
 
-CREATE DATABASE /*!32312 IF NOT EXISTS*/ `cs329e_mitra_borischu` /*!40100 DEFAULT CHARACTER SET latin1 */;
-
-USE `cs329e_mitra_borischu`;
-
 --
 -- Table structure for table `spots`
 --
